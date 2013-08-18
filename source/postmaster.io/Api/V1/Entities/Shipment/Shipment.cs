@@ -42,6 +42,8 @@ namespace Postmaster.io.Communication.Api.V1.Entities.Shipment
         [JsonProperty("id")]
         public int Id { get; set; }
 
+        public string ReferenceNo { get; set; }
+
         private const string Resource = "shipments";
 
         #endregion
