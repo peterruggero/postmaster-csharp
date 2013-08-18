@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Postmaster.io.Communication.Api.V1.Entities.Validation
+namespace Postmaster.io.Api.V1.Entities.Validation
 {
     /// <summary>
     /// ValidationResponse.

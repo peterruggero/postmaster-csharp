@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Postmaster.io.Communication.Api.V1.Entities.Tracking
+namespace Postmaster.io.Api.V1.Entities.Tracking
 {
     public class Tracking
     {

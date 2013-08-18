@@ -1,4 +1,4 @@
-namespace Postmaster.io.Communication.Api.V1.Resources
+namespace Postmaster.io.Api.V1.Resources
 {
     /// <summary>
     /// Public request content types.

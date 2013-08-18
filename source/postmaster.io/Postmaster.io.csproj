@@ -49,9 +49,7 @@
     <Compile Include="Api\V1\Entities\Shipment\Shipment.cs" />
     <Compile Include="Api\V1\Entities\Shipment\From.cs" />
     <Compile Include="Api\V1\Entities\Shipment\Package.cs" />
-    <Compile Include="Api\V1\Resources\DataType.cs" />
     <Compile Include="Api\V1\Controllers\ShipmentController.cs" />
-    <Compile Include="Config.cs" />
     <Compile Include="Postmaster.cs" />
     <Compile Include="Api\V1\Handlers\Request.cs" />
   </ItemGroup>
