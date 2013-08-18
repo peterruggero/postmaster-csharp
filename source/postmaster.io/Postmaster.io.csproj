@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C0B812A3-4FFE-43AA-AE09-711B688CB199}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Postmaster.io</RootNamespace>
+    <AssemblyName>Postmaster.io</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Api\V1\Controllers\ModelController.cs" />
+    <Compile Include="Api\V1\Controllers\TrackingController.cs" />
+    <Compile Include="Api\V1\Controllers\ValidationController.cs" />
+    <Compile Include="Api\V1\Entities\Helper\Carrier.cs" />
+    <Compile Include="Api\V1\Entities\StatusCode.cs" />
+    <Compile Include="Api\V1\Entities\Tracking\History.cs" />
+    <Compile Include="Api\V1\Entities\Tracking\Tracking.cs" />
+    <Compile Include="Api\V1\Entities\Validation\Address.cs" />
+    <Compile Include="Api\V1\Entities\Validation\ValidationResponse.cs" />
+    <Compile Include="Api\V1\Handlers\ResponseEntity.cs" />
+    <Compile Include="Api\V1\Utility\Converter.cs" />
+    <Compile Include="Managers\ErrorHandlingManager.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Api\V1\Resources\ContentType.cs" />
+    <Compile Include="Api\V1\Entities\Shipment\To.cs" />
+    <Compile Include="Api\V1\Entities\Shipment\Shipment.cs" />
+    <Compile Include="Api\V1\Entities\Shipment\From.cs" />
+    <Compile Include="Api\V1\Entities\Shipment\Package.cs" />
+    <Compile Include="Api\V1\Resources\DataType.cs" />
+    <Compile Include="Api\V1\Controllers\ShipmentController.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="Postmaster.cs" />
+    <Compile Include="Api\V1\Handlers\Request.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Libraries\Newtonsoft.Json.dll" />
+  </ItemGroup>
+</Project>
