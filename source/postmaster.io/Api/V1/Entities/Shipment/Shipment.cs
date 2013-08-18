@@ -1,9 +1,9 @@
-using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Postmaster.io.Communication.Api.V1.Handlers;
+using Postmaster.io.Api.V1.Handlers;
+using Postmaster.io.Communication.Api.V1.Entities;
 
-namespace Postmaster.io.Communication.Api.V1.Entities.Shipment
+namespace Postmaster.io.Api.V1.Entities.Shipment
 {
     /// <summary>
     /// Shipment; root entity.

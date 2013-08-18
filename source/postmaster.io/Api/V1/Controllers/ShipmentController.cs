@@ -1,5 +1,5 @@
-using Postmaster.io.Communication.Api.V1.Entities.Shipment;
-using Postmaster.io.Communication.Api.V1.Handlers;
+using Postmaster.io.Api.V1.Entities.Shipment;
+using Postmaster.io.Api.V1.Handlers;
 using Newtonsoft.Json;
 
 namespace Postmaster.io.Communication.Api.V1.Controllers

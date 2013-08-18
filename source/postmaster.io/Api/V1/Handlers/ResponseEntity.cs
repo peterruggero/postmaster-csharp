@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
+using Postmaster.io.Api.V1.Entities.Shipment;
 using Postmaster.io.Communication.Api.V1.Entities;
-using Postmaster.io.Communication.Api.V1.Entities.Shipment;
 
-namespace Postmaster.io.Communication.Api.V1.Handlers
+namespace Postmaster.io.Api.V1.Handlers
 {
     public class ResponseEntity
     {

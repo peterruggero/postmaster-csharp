@@ -1,10 +1,10 @@
 using System;
+using System.IO;
 using System.Net;
 using System.Text;
-using System.IO;
 using Postmaster.io.Managers;
 
-namespace Postmaster.io.Communication.Api.V1.Handlers
+namespace Postmaster.io.Api.V1.Handlers
 {
     public static class Request
     {

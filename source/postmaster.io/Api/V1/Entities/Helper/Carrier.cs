@@ -1,4 +1,4 @@
-﻿namespace Postmaster.io.Communication.Api.V1.Entities.Helper
+﻿namespace Postmaster.io.Api.V1.Entities.Helper
 {
     /// <summary>
     /// Carrier.

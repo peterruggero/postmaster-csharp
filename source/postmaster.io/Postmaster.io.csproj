@@ -29,7 +29,9 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\V1\Controllers\ModelController.cs" />
     <Compile Include="Api\V1\Controllers\TrackingController.cs" />

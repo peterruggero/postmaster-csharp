@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace Postmaster.io.Communication.Api.V1.Entities.Shipment
+namespace Postmaster.io.Api.V1.Entities.Shipment
 {
     /// <summary>
     /// From. Parent: <see cref="Shipment"/>

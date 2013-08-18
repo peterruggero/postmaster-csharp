@@ -1,6 +1,6 @@
 using System;
-using Postmaster.io.Communication.Api.V1.Entities.Helper;
-using Postmaster.io.Communication.Api.V1.Entities.Shipment;
+using Postmaster.io.Api.V1.Entities.Helper;
+using Postmaster.io.Api.V1.Entities.Shipment;
 
 namespace Postmaster.io
 {

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Postmaster.io.Api.V1.Entities.Validation;
-using Postmaster.io.Communication.Api.V1.Handlers;
+using Postmaster.io.Api.V1.Handlers;
 
 namespace Postmaster.io.Communication.Api.V1.Controllers
 {

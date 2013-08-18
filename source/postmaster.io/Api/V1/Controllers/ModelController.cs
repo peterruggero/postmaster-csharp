@@ -1,6 +1,6 @@
-﻿using Postmaster.io.Api.V1.Entities.Validation;
-using Postmaster.io.Communication.Api.V1.Entities.Helper;
-using Postmaster.io.Communication.Api.V1.Entities.Shipment;
+﻿using Postmaster.io.Api.V1.Entities.Helper;
+using Postmaster.io.Api.V1.Entities.Shipment;
+using Postmaster.io.Api.V1.Entities.Validation;
 
 namespace Postmaster.io.Communication.Api.V1.Controllers
 {
