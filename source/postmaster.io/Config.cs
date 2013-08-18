@@ -1,7 +1,7 @@
 ﻿namespace Postmaster.io
 {
     /// <summary>
-    /// Config.
+    /// Configuration settings.
     /// </summary>
     public class Config
     {

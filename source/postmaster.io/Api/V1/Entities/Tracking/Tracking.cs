@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace Postmaster.io.Api.V1.Entities.Tracking
 {
+    /// <summary>
+    /// Tracking result; root entity.
+    /// </summary>
     public class Tracking
     {
         [JsonProperty("status")]
@@ -13,6 +16,9 @@ namespace Postmaster.io.Api.V1.Entities.Tracking
 
         [JsonProperty("last_update")]
         public int LastUpdate { get; set; }
+
+        [JsonProperty("results")]
+        public List<Result> Results { get; set; }
 
         /// <summary>
         /// Convert string to Tracking object.
