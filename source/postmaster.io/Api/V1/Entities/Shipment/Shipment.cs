@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Postmaster.io.Api.V1.Handlers;
-using Postmaster.io.Communication.Api.V1.Entities;
+using Postmaster.io.Api.V1.Entities;
 
 namespace Postmaster.io.Api.V1.Entities.Shipment
 {
@@ -43,7 +43,6 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         public int Id { get; set; }
 
         public string ReferenceNo { get; set; }
-
         private const string Resource = "shipments";
 
         #endregion
@@ -81,6 +80,16 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         #endregion
 
         #region Utility
+
+        /// <summary>
+        /// Convert string to Tracking object.
+        /// </summary>
+        /// <param name="data">Json string.</param>
+        /// <returns>Tracking.</returns>
+        public static Shipment Convert(string data)
+        {
+            return JsonConvert.DeserializeObject<Shipment>(data);
+        }
 
         /// <summary>
         /// Create shipment.
