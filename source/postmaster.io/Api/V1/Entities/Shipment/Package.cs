@@ -10,22 +10,22 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         [JsonProperty("weight_units")]
         public string WeightUnits { get; set; }
 
-        [JsonProperty("weight_units")]
+        [JsonProperty("weight")]
         public double Weight { get; set; }
 
-        [JsonProperty("weight_units")]
+        [JsonProperty("type")]
         public string Type { get; set; }
 
-        [JsonProperty("weight_units")]
+        [JsonProperty("height")]
         public int Height { get; set; }
 
-        [JsonProperty("weight_units")]
+        [JsonProperty("width")]
         public int Width { get; set; }
 
-        [JsonProperty("weight_units")]
+        [JsonProperty("length")]
         public int Length { get; set; }
 
-        [JsonProperty("weight_units")]
+        [JsonProperty("label_url")]
         public string LabelUrl { get; set; }
 
         [JsonProperty("dimention_units")]

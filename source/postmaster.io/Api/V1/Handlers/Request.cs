@@ -14,21 +14,42 @@ namespace Postmaster.io.Api.V1.Handlers
         /// <param name="url">URL.</param>
         /// <param name="headers">Headers.</param>
         /// <param name="body">Body.</param>
-        public static ResponseEntity Post(string url, WebHeaderCollection headers, string body)
+        /// <param name="contentType">Content/Accept type.</param>
+        public static ResponseEntity Post(string url, WebHeaderCollection headers, string body, string contentType = "application/json")
         {
-            throw new NotImplementedException();
+            string response = null;
+            try
+            {
+                using (WebClient wc = new WebClient())
+                {
+                    string credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes(Config.ApiKey + ":" + Config.Password));
+                    wc.Headers[HttpRequestHeader.Authorization] = "Basic " + credentials;
+                    wc.Encoding = Encoding.UTF8;
+
+                    response = wc.UploadString(new Uri(url), body);
+                }
+            }
+            catch (WebException e)
+            {
+                ErrorHandlingManager.ReportError(e.Message, "Request.cs", "Post");
+            }
+            catch (Exception e)
+            {
+                ErrorHandlingManager.ReportError(e.Message, "Request.cs", "Post");
+            }
+            return ResponseEntity.Convert(response);
         }
 
         /// <summary>
         /// GET with specified url, dataType and headers.
         /// </summary>
         /// <param name="url">URL.</param>
-        /// <param name="dataType">Data type.</param>
+        /// <param name="acceptType">Accept type.</param>
         /// <param name="headers">Headers.</param>
-        public static string Get1(string url, WebHeaderCollection headers, string dataType = "application/json")
+        public static string Get1(string url, WebHeaderCollection headers, string acceptType = "application/json")
         {
             // create web request
-            WebRequest request = CreateWebRequest(url, "GET", dataType, null);
+            WebRequest request = CreateWebRequest(url, "GET", acceptType, null);
 
             // download/read data
             string response = ReadResponse(request);

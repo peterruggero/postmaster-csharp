@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Postmaster.io.Api.V1.Handlers;
-using Postmaster.io.Api.V1.Entities;
+using Postmaster.io.Communication.Api.V1.Entities;
 
 namespace Postmaster.io.Api.V1.Entities.Shipment
 {
@@ -33,8 +33,23 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         [JsonProperty("carrier")]
         public string Carrier { get; set; }
 
+        [JsonProperty("po_number")]
+        public string PoNumber { get; set; }
+
+        [JsonProperty("references")]
+        public List<string> References { get; set; }
+
+        [JsonProperty("options")]
+        public Dictionary<string, string> Options { get; set; }
+        
+        [JsonProperty("service")]
+        public string Service { get; set; }
+
         [JsonProperty("from")]
         public From From { get; set; }
+
+        [JsonProperty("package")]
+        public Package Package { get; set; }
 
         [JsonProperty("packages")]
         public List<Package> Packages { get; set; }
@@ -58,7 +73,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
             string postBody = JsonConvert.SerializeObject(this);
 
             // https://api.postmaster.io/v1/shipments
-            string url = "{0}/{1}/{3}";
+            string url = "{0}/{1}/{2}";
             url = string.Format(url, Config.BaseUri, Config.Version, Resource);
 
             return Request.Post(url, null, postBody);
