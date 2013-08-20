@@ -41,7 +41,7 @@
     <Compile Include="Api\V1\Entities\Tracking\Tracking.cs" />
     <Compile Include="Api\V1\Entities\Validation\Address.cs" />
     <Compile Include="Api\V1\Entities\Validation\ValidationResponse.cs" />
-    <Compile Include="Api\V1\Handlers\ResponseEntity.cs" />
+    <Compile Include="Api\V1\Entities\ResponseEntity.cs" />
     <Compile Include="Api\V1\Utility\Converter.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Managers\ErrorHandlingManager.cs" />

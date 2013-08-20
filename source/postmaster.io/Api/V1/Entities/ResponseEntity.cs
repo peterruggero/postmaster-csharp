@@ -1,15 +1,14 @@
 ﻿using Newtonsoft.Json;
-using Postmaster.io.Api.V1.Entities.Shipment;
 using Postmaster.io.Communication.Api.V1.Entities;
 
-namespace Postmaster.io.Api.V1.Handlers
+namespace Postmaster.io.Api.V1.Entities
 {
     public class ResponseEntity
     {
         #region Properties
 
         [JsonProperty]
-        public Shipment Shipment { get; set; }
+        public Shipment.Shipment Shipment { get; set; }
 
         [JsonProperty]
         public StatusCode StatusCode { get; set; }

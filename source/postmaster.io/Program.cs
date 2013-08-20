@@ -12,7 +12,9 @@ namespace Postmaster.io
             {
                 To = new To
                 {
-                    Contact = "John Smith",
+                    Country = "USA",
+                    Contact = "Jesse James",
+                    Line1 = "727 NW 23rd St",
                     City = "Oklahoma City",
                     State = "Oklahoma",
                     ZipCode = "73103",

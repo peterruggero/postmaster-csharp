@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Net;
 using System.Text;
+using Postmaster.io.Api.V1.Entities;
 using Postmaster.io.Managers;
 
 namespace Postmaster.io.Api.V1.Handlers
@@ -38,6 +39,15 @@ namespace Postmaster.io.Api.V1.Handlers
                 ErrorHandlingManager.ReportError(e.Message, "Request.cs", "Post");
             }
             return ResponseEntity.Convert(response);
+        }
+
+        public static ResponseEntity Post2(string url, string body, string contentType = "application/json")
+        {
+            WebRequest request = CreateWebRequest(url, "POST", contentType, body);
+
+            ResponseEntity response = ResponseEntity.Convert(ReadResponse(request));
+
+            return response;
         }
 
         /// <summary>
@@ -108,6 +118,8 @@ namespace Postmaster.io.Api.V1.Handlers
                 request.Method = method;
                 request.Accept = dataType;
                 request.KeepAlive = false;
+                string credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes(Config.ApiKey + ":" + Config.Password));
+                request.Headers[HttpRequestHeader.Authorization] = "Basic " + credentials;
 
                 if (request.Method == "GET")
                 {
