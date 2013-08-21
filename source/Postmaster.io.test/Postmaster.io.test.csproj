@@ -54,6 +54,7 @@
     <Compile Include="UnitTestGetRatesFunctionality.cs" />
     <Compile Include="UnitTestGetTransitTimesFunctionality.cs" />
     <Compile Include="UnitTestPackageFunctionality.cs" />
+    <Compile Include="UnitTestRequestResponseFunctionality.cs" />
     <Compile Include="UnitTestShipmentFunctionality.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

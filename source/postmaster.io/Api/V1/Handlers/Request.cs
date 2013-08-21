@@ -43,11 +43,11 @@ namespace Postmaster.io.Api.V1.Handlers
             return ResponseEntity.Convert(response);
         }
 
-        public static ResponseEntity Post2(string url, string body, string contentType = "application/json")
+        public static Dictionary<HttpStatusCode?, string> Post2(string url, string body, string contentType = "application/json")
         {
-            WebRequest request = CreateWebRequest(url, "POST", contentType, contentType, body);
+            HttpWebRequest request = CreateHttpWebRequest(url, WebRequestMethods.Http.Post, contentType, body);
 
-            ResponseEntity response = ResponseEntity.Convert(ReadResponse(request));
+            var response = ReadHandledResponse(request);
 
             return response;
         }
@@ -193,6 +193,50 @@ namespace Postmaster.io.Api.V1.Handlers
                 }
             }
             return content;
+        }
+
+        private static HttpWebRequest CreateHttpWebRequest(string url, string method, string acceptType, string payload)
+        {
+            try
+            {
+                // create request
+                HttpWebRequest request = (HttpWebRequest) WebRequest.Create(url);
+
+                // set headers and options
+                request.Method = method;
+                request.Accept = acceptType;
+                request.KeepAlive = false;
+                request.Pipelined = false;
+                request.Timeout = 60000;
+                request.UserAgent = Config.UserAgent;
+                request.PreAuthenticate = false;
+
+                // set credentials
+                string credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes(Config.ApiKey + ":" + Config.Password));
+                request.Headers[HttpRequestHeader.Authorization] = "Basic " + credentials;
+
+                // if post or put
+                if (method.Equals(WebRequestMethods.Http.Post) || method.Equals(WebRequestMethods.Http.Post))
+                {
+                    request.ContentType = "application/x-www-form-urlencoded";
+                }
+
+                // TO DO //
+                // Implement form-urlencoded paraems
+                // TO DO //
+
+                return request;
+            }
+            catch (WebException e)
+            {
+                ErrorHandlingManager.ReportError(e.Message, "Request.cs", "CreateHttpWebRequest");
+            }
+            catch (Exception e)
+            {
+                ErrorHandlingManager.ReportError(e.Message, "Request.cs", "CreateHttpWebRequest");
+            }
+
+            return null;
         }
 
         public static Dictionary<HttpStatusCode?, string> ReadHandledResponse(HttpWebRequest request)

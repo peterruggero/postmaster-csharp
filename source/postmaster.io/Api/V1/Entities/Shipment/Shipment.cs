@@ -76,8 +76,8 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
             string url = "{0}/{1}/{2}";
             url = string.Format(url, Config.BaseUri, Config.Version, Resource);
 
-            //return Request.Post(url, null, postBody);
-            return Request.Post2(url, postBody);
+            return Request.Post(url, null, postBody);
+            //return Request.Post2(url, postBody);
         }
 
         /// <summary>
