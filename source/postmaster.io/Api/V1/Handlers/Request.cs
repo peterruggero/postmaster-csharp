@@ -222,7 +222,7 @@ namespace Postmaster.io.Api.V1.Handlers
                 }
 
                 // TO DO //
-                // Implement form-urlencoded paraems
+                // Implement form-urlencoded params
                 // TO DO //
 
                 return request;
