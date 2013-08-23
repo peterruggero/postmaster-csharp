@@ -10,6 +10,35 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
     /// </summary>
     public class Shipment
     {
+        #region Declarations
+
+        /// <summary>
+        /// Shipment constructor.
+        /// </summary>
+        public Shipment()
+        {
+            // initializers
+            string defaultString = string.Empty;
+            const int defaultInt = 0;
+            List<string> defaultList = new List<string>();
+            Dictionary<string, string> defaultDictionary = new Dictionary<string, string>();
+
+            // set property defaults
+            Carrier = defaultString;
+            Cost = defaultInt;
+            CreatedAt = defaultInt;
+            Id = defaultInt;
+            Options = defaultDictionary;
+            PackageCount = defaultInt;
+            PoNumber = defaultString;
+            References = defaultList;
+            Service = defaultString;
+            Status = defaultString;
+            Tracking = defaultString;
+        }
+
+        #endregion
+
         #region Properties
 
         [JsonProperty("status")]
@@ -76,8 +105,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
             string url = "{0}/{1}/{2}";
             url = string.Format(url, Config.BaseUri, Config.Version, Resource);
 
-            return Request.Post(url, null, postBody);
-            //return Request.Post2(url, postBody);
+            return Request.Post(url, postBody);
         }
 
         /// <summary>
@@ -95,7 +123,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
 
         #endregion
 
-        #region Utility
+        #region Utilities
 
         /// <summary>
         /// Convert string to Tracking object.

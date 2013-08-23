@@ -10,6 +10,17 @@ namespace Postmaster.io
             // new shipment
             var shipment = new Shipment
             {
+                From = new From
+                {
+                    Country = "USA",
+                    Contact = "A friend",
+                    Line1 = "730 NW 23rd St",
+                    City = "Oklahoma City",
+                    State = "Oklahoma",
+                    ZipCode = "73103",
+                    PhoneNo = "123-123-1234",
+                    Residential = true
+                },
                 To = new To
                 {
                     Country = "USA",
@@ -18,7 +29,8 @@ namespace Postmaster.io
                     City = "Oklahoma City",
                     State = "Oklahoma",
                     ZipCode = "73103",
-                    PhoneNo = "123-123-1234"
+                    PhoneNo = "123-123-1234",
+                    Residential = true
                 },
                 Package = new Package
                 {

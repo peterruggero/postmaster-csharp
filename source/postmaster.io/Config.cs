@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Postmaster.io
+﻿namespace Postmaster.io
 {
     /// <summary>
     /// Configuration settings.

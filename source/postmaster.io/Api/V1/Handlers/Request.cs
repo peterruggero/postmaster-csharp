@@ -12,24 +12,35 @@ namespace Postmaster.io.Api.V1.Handlers
     public static class Request
     {
         /// <summary>
-        /// POST with specified url, headers and body.
+        /// Post 
         /// </summary>
         /// <param name="url">URL.</param>
-        /// <param name="headers">Headers.</param>
         /// <param name="body">Body.</param>
-        /// <param name="contentType">Content/Accept type.</param>
-        public static ResponseEntity Post(string url, WebHeaderCollection headers, string body, string contentType = "application/json")
+        /// <param name="acceptType">Accept type.</param>
+        /// <param name="contentType">Content type.</param>
+        public static ResponseEntity Post(string url, string body, string acceptType = "application/json",
+            string contentType = "application/json")
         {
             string response = null;
             try
             {
                 using (WebClient wc = new WebClient())
                 {
-                    string credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes(Config.ApiKey + ":" + Config.Password));
+                    // encode credentials
+                    string credentials =
+                        Convert.ToBase64String(Encoding.ASCII.GetBytes(Config.ApiKey + ":" + Config.Password));
+
+                    // set http request headers and related properties
+                    wc.Headers[HttpRequestHeader.Accept] = contentType;
                     wc.Headers[HttpRequestHeader.Authorization] = "Basic " + credentials;
+                    wc.Headers[HttpRequestHeader.ContentType] = "contentType";
+                    wc.Headers[HttpRequestHeader.UserAgent] = Config.UserAgent;
+                    
+                    // set WebClient properties
                     wc.Encoding = Encoding.UTF8;
 
-                    response = wc.UploadString(new Uri(url), body);
+                    // perform request
+                    response = wc.UploadString(new Uri(url), WebRequestMethods.Http.Post, body);
                 }
             }
             catch (WebException e)
