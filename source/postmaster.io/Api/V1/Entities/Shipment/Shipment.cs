@@ -24,7 +24,9 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
             Id = DefaultInt;
             Options = DefaultStringDictionary;
             PackageCount = DefaultInt;
+            Packages = new List<Package>();
             PoNumber = DefaultString;
+            ReferenceNo = DefaultString;
             References = DefaultStringList;
             Service = DefaultString;
             Status = DefaultString;

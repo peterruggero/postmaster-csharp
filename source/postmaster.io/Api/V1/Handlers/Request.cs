@@ -51,7 +51,8 @@ namespace Postmaster.io.Api.V1.Handlers
             {
                 ErrorHandlingManager.ReportError(e.Message, "Request.cs", "Post");
             }
-            return ResponseEntity.Convert(response);
+
+            return response != null ? ResponseEntity.Convert(response) : new ResponseEntity();
         }
 
         public static Dictionary<HttpStatusCode?, string> Post2(string url, string body, string contentType = "application/json")
