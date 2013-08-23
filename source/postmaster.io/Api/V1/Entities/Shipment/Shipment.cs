@@ -8,7 +8,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
     /// <summary>
     /// Shipment; root entity.
     /// </summary>
-    public class Shipment
+    public class Shipment : BaseEntity
     {
         #region Declarations
 
@@ -17,24 +17,18 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         /// </summary>
         public Shipment()
         {
-            // initializers
-            string defaultString = string.Empty;
-            const int defaultInt = 0;
-            List<string> defaultList = new List<string>();
-            Dictionary<string, string> defaultDictionary = new Dictionary<string, string>();
-
             // set property defaults
-            Carrier = defaultString;
-            Cost = defaultInt;
-            CreatedAt = defaultInt;
-            Id = defaultInt;
-            Options = defaultDictionary;
-            PackageCount = defaultInt;
-            PoNumber = defaultString;
-            References = defaultList;
-            Service = defaultString;
-            Status = defaultString;
-            Tracking = defaultString;
+            Carrier = DefaultString;
+            Cost = DefaultInt;
+            CreatedAt = DefaultInt;
+            Id = DefaultInt;
+            Options = DefaultStringDictionary;
+            PackageCount = DefaultInt;
+            PoNumber = DefaultString;
+            References = DefaultStringList;
+            Service = DefaultString;
+            Status = DefaultString;
+            Tracking = DefaultString;
         }
 
         #endregion

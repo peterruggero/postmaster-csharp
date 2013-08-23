@@ -5,8 +5,33 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
     /// <summary>
     /// To. Parent: <see cref="Shipment"/>
     /// </summary>
-    public class To
+    public class To : BaseEntity
     {
+        #region Declarations
+
+        /// <summary>
+        /// To constructor.
+        /// </summary>
+        public To()
+        {
+            // set property defaults
+            City = DefaultString;
+            Country = DefaultString;
+            Company = DefaultString;
+            PhoneNo = DefaultString;
+            Line1 = DefaultString;
+            Line2 = DefaultString;
+            Line3 = DefaultString;
+            State = DefaultString;
+            Contact = DefaultString;
+            Residential = DefaultBool;
+            ZipCode = DefaultString;
+        }
+
+        #endregion
+
+        #region Properties
+
         [JsonProperty("city")]
         public string City { get; set; }
 
@@ -39,6 +64,8 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
 
         [JsonProperty("zip_code")]
         public string ZipCode { get; set; }
+
+        #endregion
     }
 }
 
