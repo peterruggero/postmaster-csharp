@@ -33,6 +33,7 @@
     <Compile Include="Api\V1\Controllers\ModelController.cs" />
     <Compile Include="Api\V1\Controllers\TrackingController.cs" />
     <Compile Include="Api\V1\Controllers\ValidationController.cs" />
+    <Compile Include="Api\V1\Entities\BaseEntity.cs" />
     <Compile Include="Api\V1\Entities\Helper\Carrier.cs" />
     <Compile Include="Api\V1\Entities\Helper\Service.cs" />
     <Compile Include="Api\V1\Entities\StatusCode.cs" />

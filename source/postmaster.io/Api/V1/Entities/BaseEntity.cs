@@ -8,9 +8,9 @@ namespace Postmaster.io.Api.V1.Entities
     /// </summary>
     public class BaseEntity
     {
-        public readonly const bool DefaultBool = false;
-        public readonly const string DefaultString = "";
-        public readonly const int DefaultInt = 0;
+        public const bool DefaultBool = false;
+        public const string DefaultString = "";
+        public const int DefaultInt = 0;
         public static readonly List<string> DefaultStringList = new List<string>();
         public static readonly Dictionary<string, string> DefaultStringDictionary = new Dictionary<string, string>(); 
     }
