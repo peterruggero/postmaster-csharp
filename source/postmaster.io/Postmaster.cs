@@ -9,31 +9,10 @@ namespace Postmaster.io
     /// </summary>
     public class Postmaster
     {
-        private static Shipment _shipmentInstance;
         private static TrackingController _trackingInstance;
         private static Converter _converterInstnace;
         private static ValidationController _validationInstance;
         private static ModelController _modelInstance;
-
-        /// <summary>
-        /// Shipment singleton.
-        /// </summary>
-        /// <value>The shipment instance.</value>
-        //public static ShipmentController Shipment 
-        //{
-        //    get 
-        //    {
-        //        return _shipmentInstance ?? (_shipmentInstance = new ShipmentController ());
-        //    }
-        //}
-
-        //public static Shipment Shipment
-        //{
-        //    get
-        //    {
-        //        return _shipmentInstance = new Shipment();
-        //    }
-        //}
 
         /// <summary>
         /// Tracking singleton.

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Postmaster.io.Api.V1.Handlers;
-using Postmaster.io.Communication.Api.V1.Entities;
+using Postmaster.io.Api.V1.Resources;
 
 namespace Postmaster.io.Api.V1.Entities.Shipment
 {

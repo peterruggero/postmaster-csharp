@@ -51,6 +51,12 @@ namespace Postmaster.io.test
         }
 
         [TestMethod]
+        public void TrackThisShipmentById()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
         public void TrackShipmentByReference()
         {
             var result = Shipment.Track("1ZW470V80310800043");

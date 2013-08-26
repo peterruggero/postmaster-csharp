@@ -5,10 +5,14 @@ using System.IO;
 using System.Net;
 using System.Text;
 using Postmaster.io.Api.V1.Entities;
+using Postmaster.io.Api.V1.Entities.Shipment;
 using Postmaster.io.Managers;
 
 namespace Postmaster.io.Api.V1.Handlers
 {
+    /// <summary>
+    /// Handle web request operations.
+    /// </summary>
     public static class Request
     {
         /// <summary>
@@ -26,7 +30,7 @@ namespace Postmaster.io.Api.V1.Handlers
             {
                 using (WebClient wc = new WebClient())
                 {
-                    // encode credentials
+                    // enceode credentials
                     string credentials =
                         Convert.ToBase64String(Encoding.ASCII.GetBytes(Config.ApiKey + ":" + Config.Password));
 
@@ -45,41 +49,20 @@ namespace Postmaster.io.Api.V1.Handlers
             }
             catch (WebException e)
             {
-                ErrorHandlingManager.ReportError(e.Message, "Request.cs", "Post");
+                //var resp = (HttpWebResponse) e.Response;
+                string responseBody;
+                using (var reader = new StreamReader(e.Response.GetResponseStream()))
+                {
+                    responseBody = reader.ReadToEnd();
+                }
+                ErrorHandlingManager.ReportError(e.Message, responseBody, "Request.cs", "Post");
             }
             catch (Exception e)
             {
                 ErrorHandlingManager.ReportError(e.Message, "Request.cs", "Post");
             }
 
-            return response != null ? ResponseEntity.Convert(response) : new ResponseEntity();
-        }
-
-        public static Dictionary<HttpStatusCode?, string> Post2(string url, string body, string contentType = "application/json")
-        {
-            HttpWebRequest request = CreateHttpWebRequest(url, WebRequestMethods.Http.Post, contentType, body);
-
-            var response = ReadHandledResponse(request);
-
-            return response;
-        }
-
-        /// <summary>
-        /// GET with specified url, dataType and headers.
-        /// </summary>
-        /// <param name="url">URL.</param>
-        /// <param name="acceptType">Accept type.</param>
-        /// <param name="headers">Headers.</param>
-        public static string Get1(string url, WebHeaderCollection headers, string acceptType = "application/json")
-        {
-            // create web request
-            WebRequest request = CreateWebRequest(url, "GET", acceptType, acceptType, null);
-
-            // download/read data
-            string response = ReadResponse(request);
-
-            // return
-            return response;
+            return response != null ? ResponseEntity.Convert(response) : null;
         }
 
         /// <summary>
@@ -117,97 +100,14 @@ namespace Postmaster.io.Api.V1.Handlers
         }
 
         /// <summary>
-        /// Creates the web request.
+        /// Create HTTP Web Request.
         /// </summary>
-        /// <returns>The web request.</returns>
-        /// <param name="url">URL.</param>
-        /// <param name="httpMethod">HTTP Method.</param>
-        /// <param name="contentType">Content Type.</param>
+        /// <param name="url">Url.</param>
+        /// <param name="method">Method.</param>
         /// <param name="acceptType">Accept type.</param>
         /// <param name="body">Body.</param>
-        private static WebRequest CreateWebRequest(string url, string httpMethod, string contentType, string acceptType, string body)
-        {
-            // build header collection
-            WebHeaderCollection headerCollection = new WebHeaderCollection
-            {
-                {"Method", httpMethod},
-                {HttpRequestHeader.Accept, acceptType},
-                {HttpRequestHeader.ContentType, contentType}
-            };
-
-            HttpWebRequest request = null;
-            try
-            {
-                // create request
-                request = (HttpWebRequest) WebRequest.Create(url);
-
-                // set headers and related properties
-                string credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes(Config.ApiKey + ":" + Config.Password));
-                request.Headers[HttpRequestHeader.Authorization] = "Basic " + credentials;
-                request.Method = httpMethod;
-                request.Accept = acceptType;
-                request.ContentType = contentType;
-                request.KeepAlive = false;
-                request.Timeout = 60000;
-                request.ContentType = contentType;
-                request.AllowWriteStreamBuffering = true;
-
-                // if POST
-                if (request.Method.Equals(WebRequestMethods.Http.Post))
-                {
-                    using (var streamWriter = new StreamWriter(request.GetRequestStream()))
-                    {
-                        streamWriter.Write(body);
-                    }
-                }
-            }
-            catch (WebException e)
-            {
-                ErrorHandlingManager.ReportError(e.Message, "Request.cs", "CreateWebRequest");
-            }
-            catch (Exception e)
-            {
-                ErrorHandlingManager.ReportError(e.Message, "Request.cs", "CreateWebRequest");
-            }
-
-            return request;
-        }
-
-        /// <summary>
-        /// Reads the response.
-        /// </summary>
-        /// <returns>The response string.</returns>
-        /// <param name="request">Input web request.</param>
-        private static string ReadResponse(WebRequest request)
-        {
-            string content = null;
-            if (request != null)
-            {
-                try
-                {
-                    using (var response = request.GetResponse())
-                    using (var sr = new StreamReader(response.GetResponseStream()))
-                    {
-                        content = sr.ReadToEnd();
-                    }
-                }
-                catch (WebException e)
-                {
-                    ErrorHandlingManager.ReportError(e.Message, "Request.cs", "ReadResponse");
-                }
-                catch (IOException e)
-                {
-                    ErrorHandlingManager.ReportError(e.Message, "Request.cs", "ReadResponse");
-                }
-                catch (Exception e)
-                {
-                    ErrorHandlingManager.ReportError(e.Message, "Request.cs", "ReadResponse");
-                }
-            }
-            return content;
-        }
-
-        private static HttpWebRequest CreateHttpWebRequest(string url, string method, string acceptType, string payload)
+        /// <returns>HttpWebRequest.</returns>
+        private static HttpWebRequest CreateHttpWebRequest(string url, string method, string acceptType, string body)
         {
             try
             {
@@ -230,12 +130,13 @@ namespace Postmaster.io.Api.V1.Handlers
                 // if post or put
                 if (method.Equals(WebRequestMethods.Http.Post) || method.Equals(WebRequestMethods.Http.Post))
                 {
-                    request.ContentType = "application/x-www-form-urlencoded";
+                    //request.ContentType = "application/x-www-form-urlencoded";
+                    request.ContentType = "application/json";
                 }
 
-                // TO DO //
-                // Implement form-urlencoded params
-                // TO DO //
+                // TO DO
+                //
+                // TO DO
 
                 return request;
             }
@@ -251,6 +152,11 @@ namespace Postmaster.io.Api.V1.Handlers
             return null;
         }
 
+        /// <summary>
+        /// Read and handle HTTP web response.
+        /// </summary>
+        /// <param name="request">HttpWebRequest.</param>
+        /// <returns>Response HttpStatusCode and string result.</returns>
         public static Dictionary<HttpStatusCode?, string> ReadHandledResponse(HttpWebRequest request)
         {
             // defaults

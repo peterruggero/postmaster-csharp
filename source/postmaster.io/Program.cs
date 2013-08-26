@@ -8,28 +8,16 @@ namespace Postmaster.io
         public static void Main(string[] args)
         {
             // new shipment
-            var shipment = new Shipment
+            var shipment = new Shipment()
             {
-                From = new From
-                {
-                    Country = "USA",
-                    Contact = "A friend",
-                    Line1 = "730 NW 23rd St",
-                    City = "Oklahoma City",
-                    State = "Oklahoma",
-                    ZipCode = "73103",
-                    PhoneNo = "123-123-1234",
-                    Residential = true
-                },
                 To = new To
                 {
-                    Country = "USA",
                     Contact = "Jesse James",
                     Line1 = "727 NW 23rd St",
                     City = "Oklahoma City",
-                    State = "Oklahoma",
+                    State = UsState.Oklahoma,
                     ZipCode = "73103",
-                    PhoneNo = "123-123-1234",
+                    PhoneNo = "918-123-1234",
                     Residential = true
                 },
                 Package = new Package
