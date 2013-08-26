@@ -11,5 +11,17 @@ namespace Postmaster.io.test
         {
             throw new NotImplementedException();
         }
+
+        [TestMethod]
+        public void ValidateSimpleAddress()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void ValidateComplexAddress()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
