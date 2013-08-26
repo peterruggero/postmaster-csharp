@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using Postmaster.io.Api.V1.Handlers;
@@ -115,6 +116,15 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
             url = string.Format(url, Config.BaseUri, Config.Version, Resource, Id);
 
             return Request.Get(url, null);
+        }
+
+        /// <summary>
+        /// Validate this address.
+        /// </summary>
+        /// <returns>Bool.</returns>
+        public bool ValidateAddress()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

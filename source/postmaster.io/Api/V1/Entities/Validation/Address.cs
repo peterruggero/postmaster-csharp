@@ -1,9 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
+using Postmaster.io.Api.V1.Handlers;
 
 namespace Postmaster.io.Api.V1.Entities.Validation
 {
     public class Address
     {
+        #region Properties
+
         [JsonProperty("city")]
         public string City { get; set; }
 
@@ -33,5 +37,20 @@ namespace Postmaster.io.Api.V1.Entities.Validation
 
         [JsonProperty("active")]
         public bool Active { get; set; }
+
+        #endregion
+
+        #region Functions
+
+        /// <summary>
+        /// Validate this address.
+        /// </summary>
+        /// <returns>Bool.</returns>
+        public bool Validate()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }
