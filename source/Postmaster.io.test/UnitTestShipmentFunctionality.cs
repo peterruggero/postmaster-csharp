@@ -39,9 +39,15 @@ namespace Postmaster.io.test
         }
 
         [TestMethod]
-        public void VoidShipment()
+        public void VoidThisShipment()
         {
             throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void VoidShipment()
+        {
+            Assert.IsNotNull(Shipment.Void(6205506188214272));
         }
 
         [TestMethod]

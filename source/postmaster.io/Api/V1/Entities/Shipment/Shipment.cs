@@ -82,7 +82,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         public List<Package> Packages { get; set; }
 
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
         public string ReferenceNo { get; set; }
         private const string Resource = "shipments";
@@ -112,8 +112,6 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         /// <returns>ResponseEntity.</returns>
         public HttpStatusCode? Void()
         {
-            string postBody = JsonConvert.SerializeObject(this);
-
             // https://api.postmaster.io/v1/shipments/:id/void
             string url = "{0}/{1}/{2}/{3}/void";
             url = string.Format(url, Config.BaseUri, Config.Version, Resource, this.Id);
@@ -176,15 +174,29 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         }
 
         /// <summary>
-        /// Track package by shipment id.
+        /// Void shipment by Id.
         /// </summary>
-        /// <param name="shipmentId">Shipment id.</param>
+        /// <param name="id">Id.</param>
+        /// <returns>HttpStatusCode?.</returns>
+        public static HttpStatusCode? Void(long id)
+        {
+            // https://api.postmaster.io/v1/shipments/:id/void
+            string url = "{0}/{1}/{2}/{3}/void";
+            url = string.Format(url, Config.BaseUri, Config.Version, Resource, id);
+
+            return Request.Delete(url);
+        }
+
+        /// <summary>
+        /// Track package by shipment Id.
+        /// </summary>
+        /// <param name="id">Id.</param>
         /// <returns>TO DO</returns>
-        public static string Track(int shipmentId)
+        public static string Track(long id)
         {
             // https://api.postmaster.io/v1/shipments/1234/track
             string url = "{0}/{1}/{2}/{3}/track";
-            url = string.Format(url, Config.BaseUri, Config.Version, Resource, shipmentId);
+            url = string.Format(url, Config.BaseUri, Config.Version, Resource, id);
 
             return Request.Get(url, null);
         }
