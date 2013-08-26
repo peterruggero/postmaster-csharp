@@ -17,74 +17,60 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         /// <summary>
         /// Shipment constructor.
         /// </summary>
-        public Shipment()
-        {
-            // set property defaults
-            Carrier = DefaultString;
-            Cost = DefaultInt;
-            CreatedAt = DefaultInt;
-            Id = DefaultInt;
-            Options = DefaultStringDictionary;
-            PackageCount = DefaultInt;
-            Packages = new List<Package>();
-            PoNumber = DefaultString;
-            ReferenceNo = DefaultString;
-            References = DefaultStringList;
-            Service = DefaultString;
-            Status = DefaultString;
-            Tracking = DefaultString;
-        }
+        public Shipment() { }
 
         #endregion
 
         #region Properties
 
-        [JsonProperty("status")]
+        [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
         public string Status { get; set; }
 
-        [JsonProperty("tracking")]
+        [JsonProperty("tracking", NullValueHandling = NullValueHandling.Ignore)]
         public string Tracking { get; set; }
 
-        [JsonProperty("package_count")]
+        [JsonProperty("package_count", NullValueHandling = NullValueHandling.Ignore)]
         public int PackageCount { get; set; }
 
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", NullValueHandling = NullValueHandling.Ignore)]
         public int CreatedAt { get; set; }
 
         [JsonProperty("to")]
         public To To { get; set; }
 
-        [JsonProperty("cost")]
+        [JsonProperty("cost", NullValueHandling = NullValueHandling.Ignore)]
         public int Cost { get; set; }
 
         [JsonProperty("carrier")]
         public string Carrier { get; set; }
 
-        [JsonProperty("po_number")]
+        [JsonProperty("po_number", NullValueHandling = NullValueHandling.Ignore)]
         public string PoNumber { get; set; }
 
-        [JsonProperty("references")]
+        [JsonProperty("references", NullValueHandling = NullValueHandling.Ignore)]
         public List<string> References { get; set; }
 
-        [JsonProperty("options")]
+        [JsonProperty("options", NullValueHandling = NullValueHandling.Ignore)]
         public Dictionary<string, string> Options { get; set; }
-        
+
         [JsonProperty("service")]
         public string Service { get; set; }
 
-        [JsonProperty("from")]
+        [JsonProperty("from", NullValueHandling = NullValueHandling.Ignore)]
         public From From { get; set; }
 
         [JsonProperty("package")]
         public Package Package { get; set; }
 
-        [JsonProperty("packages")]
+        [JsonProperty("packages", NullValueHandling = NullValueHandling.Ignore)]
         public List<Package> Packages { get; set; }
 
-        [JsonProperty("id")]
+        [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         public long Id { get; set; }
 
+        [JsonIgnore]
         public string ReferenceNo { get; set; }
+
         private const string Resource = "shipments";
 
         #endregion
@@ -163,7 +149,8 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         public static Shipment Create(Shipment shipment)
         {
             // serialize shipment
-            string postBody = JsonConvert.SerializeObject(shipment);
+            string postBody = JsonConvert.SerializeObject(shipment,
+                new JsonSerializerSettings {DefaultValueHandling = DefaultValueHandling.Ignore});
 
             // https://api.postmaster.io/v1/shipments
             string url = "{0}/{1}/{3}";

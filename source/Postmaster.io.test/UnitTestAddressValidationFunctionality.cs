@@ -23,5 +23,11 @@ namespace Postmaster.io.test
         {
             throw new NotImplementedException();
         }
+
+        [TestMethod]
+        public void ValidateInternationalAddress()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

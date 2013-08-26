@@ -35,13 +35,11 @@ namespace Postmaster.io.Api.V1.Handlers
                     string credentials =
                         Convert.ToBase64String(Encoding.ASCII.GetBytes(Config.ApiKey + ":" + Config.Password));
 
-                    // set http request headers and related properties
-                    wc.Headers[HttpRequestHeader.Accept] = contentType;
-                    wc.Headers[HttpRequestHeader.Authorization] = "Basic " + credentials;
-                    wc.Headers[HttpRequestHeader.ContentType] = "contentType";
-                    wc.Headers[HttpRequestHeader.UserAgent] = Config.UserAgent;
-                    
-                    // set WebClient properties
+                    // set headers and related properties
+                    wc.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                    wc.Headers.Add(HttpRequestHeader.Authorization, "Basic " + credentials);
+                    wc.Headers.Add(HttpRequestHeader.Accept, "application/json");
+                    wc.Headers.Add(HttpRequestHeader.UserAgent, Config.UserAgent);
                     wc.Encoding = Encoding.UTF8;
 
                     // perform request

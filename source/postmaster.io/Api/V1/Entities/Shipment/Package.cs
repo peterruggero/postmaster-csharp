@@ -12,45 +12,35 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         /// <summary>
         /// Package constructor.
         /// </summary>
-        public Package()
-        {
-            WeightUnits = DefaultString;
-            Weight = DefaultInt;
-            Type = DefaultString;
-            Height = DefaultInt;
-            Weight = DefaultInt;
-            Length = DefaultInt;
-            LabelUrl = DefaultString;
-            DimentionUnits = DefaultString;
-        }
+        public Package() { }
 
         #endregion
 
         #region Properties
 
-        [JsonProperty("weight_units")]
+        [JsonProperty("weight_units", NullValueHandling = NullValueHandling.Ignore)]
         public string WeightUnits { get; set; }
 
-        [JsonProperty("weight")]
+        [JsonProperty("weight", NullValueHandling = NullValueHandling.Ignore)]
         public double Weight { get; set; }
 
-        [JsonProperty("type")]
+        [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; set; }
 
-        [JsonProperty("height")]
+        [JsonProperty("height", NullValueHandling = NullValueHandling.Ignore)]
         public int Height { get; set; }
 
-        [JsonProperty("width")]
+        [JsonProperty("width", NullValueHandling = NullValueHandling.Ignore)]
         public int Width { get; set; }
 
-        [JsonProperty("length")]
+        [JsonProperty("length", NullValueHandling = NullValueHandling.Ignore)]
         public int Length { get; set; }
 
-        [JsonProperty("label_url")]
+        [JsonProperty("label_url", NullValueHandling = NullValueHandling.Ignore)]
         public string LabelUrl { get; set; }
 
-        [JsonProperty("dimention_units")]
-        public string DimentionUnits { get; set; }
+        [JsonProperty("dimension_units", NullValueHandling = NullValueHandling.Ignore)]
+        public string DimensionUnits { get; set; }
 
         #endregion
     }

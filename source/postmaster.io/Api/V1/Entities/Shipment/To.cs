@@ -12,21 +12,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         /// <summary>
         /// To constructor.
         /// </summary>
-        public To()
-        {
-            // set property defaults
-            City = DefaultString;
-            Country = DefaultString;
-            Company = DefaultString;
-            PhoneNo = DefaultString;
-            Line1 = DefaultString;
-            Line2 = DefaultString;
-            Line3 = DefaultString;
-            State = DefaultString;
-            Contact = DefaultString;
-            Residential = DefaultBool;
-            ZipCode = DefaultString;
-        }
+        public To() { }
 
         #endregion
 
@@ -35,31 +21,31 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         [JsonProperty("city")]
         public string City { get; set; }
 
-        [JsonProperty("country")]
+        [JsonProperty("country", NullValueHandling = NullValueHandling.Ignore)]
         public string Country { get; set; }
 
-        [JsonProperty("company")]
+        [JsonProperty("company", NullValueHandling = NullValueHandling.Ignore)]
         public string Company { get; set; }
 
-        [JsonProperty("phone_no")]
+        [JsonProperty("phone_no", NullValueHandling = NullValueHandling.Ignore)]
         public string PhoneNo { get; set; }
 
-        [JsonProperty("line1")]
+        [JsonProperty("line1", NullValueHandling = NullValueHandling.Ignore)]
         public string Line1 { get; set; }
 
-        [JsonProperty("line2")]
+        [JsonProperty("line2", NullValueHandling = NullValueHandling.Ignore)]
         public string Line2 { get; set; }
 
-        [JsonProperty("line3")]
+        [JsonProperty("line3", NullValueHandling = NullValueHandling.Ignore)]
         public string Line3 { get; set; }
 
         [JsonProperty("state")]
         public string State { get; set; }
 
-        [JsonProperty("contact")]
+        [JsonProperty("contact", NullValueHandling = NullValueHandling.Ignore)]
         public string Contact { get; set; }
 
-        [JsonProperty("residential")]
+        [JsonProperty("residential", NullValueHandling = NullValueHandling.Ignore)]
         public bool Residential { get; set; }
 
         [JsonProperty("zip_code")]
