@@ -16,12 +16,13 @@ namespace Postmaster.io.Api.V1.Handlers
     public static class Request
     {
         /// <summary>
-        /// Post 
+        /// Post .
         /// </summary>
         /// <param name="url">URL.</param>
         /// <param name="body">Body.</param>
         /// <param name="acceptType">Accept type.</param>
         /// <param name="contentType">Content type.</param>
+        /// <returns>ResponseEntity.</returns>
         public static ResponseEntity Post(string url, string body, string acceptType = "application/json",
             string contentType = "application/json")
         {
@@ -63,6 +64,27 @@ namespace Postmaster.io.Api.V1.Handlers
             }
 
             return response != null ? ResponseEntity.Convert(response) : null;
+        }
+
+        /// <summary>
+        /// Delete.
+        /// </summary>
+        /// <param name="url">URL.</param>
+        /// <returns>ResponseEntity.</returns>
+        public static HttpStatusCode? Delete(string url)
+        {
+            WebRequest request = WebRequest.Create(url);
+            request.Method = "DELETE";
+
+            Dictionary<HttpStatusCode?, string> response = ReadHandledResponse(request as HttpWebRequest);
+            if (response.Count == 1)
+            {
+                foreach (KeyValuePair<HttpStatusCode?, string> pair in response)
+                {
+                    return pair.Key;
+                }
+            }
+            return null;
         }
 
         /// <summary>

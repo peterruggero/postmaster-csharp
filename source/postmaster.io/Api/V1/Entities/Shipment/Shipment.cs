@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
 using Newtonsoft.Json;
 using Postmaster.io.Api.V1.Handlers;
 using Postmaster.io.Api.V1.Resources;
@@ -103,6 +104,21 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
             url = string.Format(url, Config.BaseUri, Config.Version, Resource);
 
             return Request.Post(url, postBody);
+        }
+
+        /// <summary>
+        /// Void this shipment.
+        /// </summary>
+        /// <returns>ResponseEntity.</returns>
+        public HttpStatusCode? Void()
+        {
+            string postBody = JsonConvert.SerializeObject(this);
+
+            // https://api.postmaster.io/v1/shipments/:id/void
+            string url = "{0}/{1}/{2}/{3}/void";
+            url = string.Format(url, Config.BaseUri, Config.Version, Resource, this.Id);
+
+            return Request.Delete(url);
         }
 
         /// <summary>
