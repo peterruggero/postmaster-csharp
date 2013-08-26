@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Postmaster.io.Api.V1.Entities.Helper;
 using Postmaster.io.Api.V1.Entities.Shipment;
@@ -47,7 +49,9 @@ namespace Postmaster.io.test
         [TestMethod]
         public void VoidShipment()
         {
-            Assert.IsNotNull(Shipment.Void(6205506188214272));
+            HttpStatusCode? result = Shipment.Void(6205506188214272);
+            Assert.IsNotNull(result);
+            Assert.AreEqual(HttpStatusCode.OK, result.Value);
         }
 
         [TestMethod]
