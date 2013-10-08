@@ -1,4 +1,3 @@
-using Postmaster.io.Api.V1.Entities.Shipment;
 using Postmaster.io.Communication.Api.V1.Controllers;
 using Postmaster.io.Communication.Api.V1.Utility;
 

@@ -42,6 +42,9 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         [JsonProperty("dimension_units", NullValueHandling = NullValueHandling.Ignore)]
         public string DimensionUnits { get; set; }
 
+        [JsonProperty("customs", NullValueHandling = NullValueHandling.Ignore)]
+        public Customs Customs { get; set; }
+
         #endregion
     }
 }

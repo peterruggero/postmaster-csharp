@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Diagnostics;
+using System.Collections.Generic;
 using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Postmaster.io.Api.V1.Entities.Helper;
@@ -11,18 +11,26 @@ namespace Postmaster.io.test
     public class UnitTestShipmentFunctionality
     {
         [TestMethod]
+        public void GetShipments()
+        {
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
         public void CreateShipment()
         {
             // create Shipment object
-            var shipment = new Shipment
+            var shipment = new Shipment()
             {
                 To = new To
                 {
-                    Contact = "Jesse James ",
+                    Contact = "Jesse James",
+                    Line1 = "727 NW 23rd St",
                     City = "Oklahoma City",
-                    State = "Oklahoma",
+                    State = UsState.Oklahoma,
                     ZipCode = "73103",
-                    PhoneNo = "123-123-1234"
+                    PhoneNo = "918-123-1234",
+                    Residential = true
                 },
                 Package = new Package
                 {
@@ -49,7 +57,7 @@ namespace Postmaster.io.test
         [TestMethod]
         public void VoidShipment()
         {
-            HttpStatusCode? result = Shipment.Void(6205506188214272);
+            HttpStatusCode? result = Shipment.Void(5741031244955648);
             Assert.IsNotNull(result);
             Assert.AreEqual(HttpStatusCode.OK, result.Value);
         }
@@ -62,6 +70,41 @@ namespace Postmaster.io.test
 
         [TestMethod]
         public void TrackThisShipmentById()
+        {
+            // create Shipment object
+            var shipment = new Shipment()
+            {
+                To = new To
+                {
+                    Contact = "Jesse James",
+                    Line1 = "727 NW 23rd St",
+                    City = "Oklahoma City",
+                    State = UsState.Oklahoma,
+                    ZipCode = "73103",
+                    PhoneNo = "918-123-1234",
+                    Residential = true
+                },
+                Package = new Package
+                {
+                    Weight = 1.5,
+                    Length = 10,
+                    Width = 6,
+                    Height = 8
+                },
+                Carrier = Carrier.Ups,
+                Service = Service.TwoDay
+            };
+
+            // post object
+            var response = shipment.Create();
+            Assert.IsNotNull(response, "Shipment response returned null.");
+
+            var result = response.Track();
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void TrackThisShipmentByReference()
         {
             throw new NotImplementedException();
         }
@@ -82,7 +125,7 @@ namespace Postmaster.io.test
         [TestMethod]
         public void TrackShipmentById()
         {
-            var result = Shipment.Track(3004);
+            var result = Shipment.Track(6408984558829568);
             Assert.IsNotNull(result, "TrackShipmentById response returned null.");
         }
 

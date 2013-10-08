@@ -23,7 +23,7 @@ namespace Postmaster.io.Api.V1.Handlers
         /// <param name="acceptType">Accept type.</param>
         /// <param name="contentType">Content type.</param>
         /// <returns>ResponseEntity.</returns>
-        public static ResponseEntity Post(string url, string body, string acceptType = "application/json",
+        public static string Post(string url, string body, string acceptType = "application/json",
             string contentType = "application/json")
         {
             string response = null;
@@ -60,8 +60,7 @@ namespace Postmaster.io.Api.V1.Handlers
             {
                 ErrorHandlingManager.ReportError(e.Message, "Request.cs", "Post");
             }
-
-            return response != null ? ResponseEntity.Convert(response) : null;
+            return response;
         }
 
         /// <summary>
@@ -89,9 +88,9 @@ namespace Postmaster.io.Api.V1.Handlers
         /// GET with specified url, dataType and headers.
         /// </summary>
         /// <param name="url">URL.</param>
-        /// <param name="dataType">Data type.</param>
+        /// <param name="acceptType">Accept type.</param>
         /// <param name="headers">Headers.</param>
-        public static string Get(string url, WebHeaderCollection headers, string dataType = "application/json")
+        public static string Get(string url, WebHeaderCollection headers, string acceptType = "application/json")
         {
             string response = null;
             try

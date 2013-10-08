@@ -6,7 +6,7 @@ namespace Postmaster.io.Api.V1.Entities.Tracking
     /// <summary>
     /// Tracking result; root entity.
     /// </summary>
-    public class Tracking
+    public class TrackingBase
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -25,9 +25,9 @@ namespace Postmaster.io.Api.V1.Entities.Tracking
         /// </summary>
         /// <param name="data">Json string.</param>
         /// <returns>Tracking.</returns>
-        public static Tracking Convert(string data)
+        public static TrackingBase Convert(string data)
         {
-            return JsonConvert.DeserializeObject<Tracking>(data);
+            return JsonConvert.DeserializeObject<TrackingBase>(data);
         }
     }
 }

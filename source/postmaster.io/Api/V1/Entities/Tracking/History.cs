@@ -2,6 +2,9 @@
 
 namespace Postmaster.io.Api.V1.Entities.Tracking
 {
+    /// <summary>
+    /// Tracking history.
+    /// </summary>
     public class History
     {
         [JsonProperty("status")]

@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
-using Postmaster.io.Api.V1.Resources;
+﻿using System.Net;
+using Newtonsoft.Json;
 
 namespace Postmaster.io.Api.V1.Entities.Shipment
 {
-    public class ResponseEntity
+    public class ShipmentBase
     {
         #region Properties
 
@@ -11,7 +11,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         public Shipment Shipment { get; set; }
 
         [JsonProperty]
-        public StatusCode StatusCode { get; set; }
+        public HttpStatusCode? StatusCode { get; set; }
 
         #endregion
 
@@ -22,9 +22,9 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         /// </summary>
         /// <param name="data">Json string.</param>
         /// <returns>ResponseEntity.</returns>
-        public static ResponseEntity Convert(string data)
+        public static ShipmentBase Convert(string data)
         {
-            return JsonConvert.DeserializeObject<ResponseEntity>(data);
+            return JsonConvert.DeserializeObject<ShipmentBase>(data);
         }
 
         #endregion

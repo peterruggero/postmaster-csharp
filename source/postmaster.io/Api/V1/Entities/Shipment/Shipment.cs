@@ -12,22 +12,16 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
     /// </summary>
     public class Shipment : BaseEntity
     {
-        #region Declarations
-
-        /// <summary>
-        /// Shipment constructor.
-        /// </summary>
-        public Shipment() { }
-
-        #endregion
-
         #region Properties
 
         [JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
         public string Status { get; set; }
 
         [JsonProperty("tracking", NullValueHandling = NullValueHandling.Ignore)]
-        public string Tracking { get; set; }
+        public List<string> Tracking { get; set; }
+
+        [JsonProperty("prepaid", NullValueHandling = NullValueHandling.Ignore)]
+        public bool Prepaid { get; set; }
 
         [JsonProperty("package_count", NullValueHandling = NullValueHandling.Ignore)]
         public int PackageCount { get; set; }
@@ -71,6 +65,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         [JsonIgnore]
         public string ReferenceNo { get; set; }
 
+        [JsonIgnore]
         private const string Resource = "shipments";
 
         #endregion
@@ -81,7 +76,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         /// Create this shipment.
         /// </summary>
         /// <returns>ResponseEntity.</returns>
-        public ResponseEntity Create()
+        public Shipment Create()
         {
             string postBody = JsonConvert.SerializeObject(this);
 
@@ -89,7 +84,9 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
             string url = "{0}/{1}/{2}";
             url = string.Format(url, Config.BaseUri, Config.Version, Resource);
 
-            return Request.Post(url, postBody);
+            string response = Request.Post(url, postBody);
+
+            return response != null ? JsonConvert.DeserializeObject<Shipment>(response) : null;
         }
 
         /// <summary>
@@ -156,8 +153,9 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
             string url = "{0}/{1}/{3}";
             url = string.Format(url, Config.BaseUri, Config.Version, Resource);
 
-            var response = Request.Post(url, null, postBody);
-            return response.StatusCode.Equals(StatusCode.PostSuccess) ? response.Shipment : null;
+            string response = Request.Post(url, null, postBody);
+
+            return response != null ? JsonConvert.DeserializeObject<Shipment>(response) : null;
         }
 
         /// <summary>
@@ -172,6 +170,26 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
             url = string.Format(url, Config.BaseUri, Config.Version, Resource, id);
 
             return Request.Delete(url);
+        }
+
+        /// <summary>
+        /// Get Shipment by Id.
+        /// </summary>
+        /// <param name="id">Id.</param>
+        /// <returns>Shipment.</returns>
+        public static Shipment Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Get all Shipments.
+        /// </summary>
+        /// <param name="limit">Result limit.</param>
+        /// <returns>Shipment collection.</returns>
+        public static List<Shipment> GetAll(int limit)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>

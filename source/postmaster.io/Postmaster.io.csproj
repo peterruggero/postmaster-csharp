@@ -37,13 +37,17 @@
     <Compile Include="Api\V1\Entities\Helper\UsState.cs" />
     <Compile Include="Api\V1\Entities\Helper\Carrier.cs" />
     <Compile Include="Api\V1\Entities\Helper\Service.cs" />
+    <Compile Include="Api\V1\Entities\Shipment\Contents.cs" />
+    <Compile Include="Api\V1\Entities\Shipment\Customs.cs" />
+    <Compile Include="Api\V1\Entities\Time\Time.cs" />
+    <Compile Include="Api\V1\Entities\Time\TimeBase.cs" />
     <Compile Include="Api\V1\Resources\StatusCode.cs" />
     <Compile Include="Api\V1\Entities\Tracking\History.cs" />
     <Compile Include="Api\V1\Entities\Tracking\Result.cs" />
-    <Compile Include="Api\V1\Entities\Tracking\Tracking.cs" />
+    <Compile Include="Api\V1\Entities\Tracking\TrackingBase.cs" />
     <Compile Include="Api\V1\Entities\Validation\Address.cs" />
     <Compile Include="Api\V1\Entities\Validation\ValidationResponse.cs" />
-    <Compile Include="Api\V1\Entities\Shipment\ResponseEntity.cs" />
+    <Compile Include="Api\V1\Entities\Shipment\ShipmentBase.cs" />
     <Compile Include="Api\V1\Utility\Converter.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Managers\ErrorHandlingManager.cs" />
@@ -63,6 +67,10 @@
       <HintPath>Libraries\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Libraries\Newtonsoft.Json.dll" />
