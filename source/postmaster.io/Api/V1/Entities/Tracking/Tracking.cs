@@ -9,11 +9,17 @@ namespace Postmaster.io.Api.V1.Entities.Tracking
     /// </summary>
     public class Tracking
     {
+        #region Properties
+
         [JsonProperty("results")]
         public List<Result> Results { get; set; }
 
         [JsonIgnore]
         private const string Resource = "shipments";
+
+        #endregion
+
+        #region Utilities
 
         /// <summary>
         /// Track Shipment by Id.
@@ -46,5 +52,7 @@ namespace Postmaster.io.Api.V1.Entities.Tracking
 
             return response != null ? JsonConvert.DeserializeObject<Result>(response) : null;
         }
+
+        #endregion
     }
 }

@@ -39,8 +39,8 @@
     <Compile Include="Api\V1\Entities\Helper\Service.cs" />
     <Compile Include="Api\V1\Entities\Shipment\Contents.cs" />
     <Compile Include="Api\V1\Entities\Shipment\Customs.cs" />
-    <Compile Include="Api\V1\Entities\Time\Time.cs" />
-    <Compile Include="Api\V1\Entities\Time\TimeBase.cs" />
+    <Compile Include="Api\V1\Entities\Time\TransitTime.cs" />
+    <Compile Include="Api\V1\Entities\Time\TransitTimeResponse.cs" />
     <Compile Include="Api\V1\JObjectMapper.cs" />
     <Compile Include="Api\V1\Resources\StatusCode.cs" />
     <Compile Include="Api\V1\Entities\Tracking\History.cs" />

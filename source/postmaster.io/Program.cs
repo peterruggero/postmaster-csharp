@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Postmaster.io.Api.V1.Entities.Shipment;
+using Postmaster.io.Api.V1.Entities.Time;
 using Postmaster.io.Api.V1.Entities.Validation;
 
 namespace Postmaster.io
@@ -119,7 +120,23 @@ namespace Postmaster.io
 
             #endregion
 
-            #region Get Transit Time
+            #region Get Transit Times
+
+            //TransitTime timeArgs = new TransitTime
+            //{
+            //    Carrier = "USPS",
+            //    Commercial = false,
+            //    FromZip = "74104",
+            //    ToZip = "74003",
+            //    Weight = 5.5
+            //};
+
+            //var times = TransitTime.GetTimes(timeArgs);
+            //foreach (var time in times)
+            //{
+            //    Debug.WriteLine(time.Service);
+            //    Debug.WriteLine(time.DeliveryTimestamp);
+            //}
 
             #endregion
         }
