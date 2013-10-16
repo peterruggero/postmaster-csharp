@@ -37,6 +37,8 @@
     <Compile Include="Api\V1\Entities\Helper\UsState.cs" />
     <Compile Include="Api\V1\Entities\Helper\Carrier.cs" />
     <Compile Include="Api\V1\Entities\Helper\Service.cs" />
+    <Compile Include="Api\V1\Entities\Rate\Rate.cs" />
+    <Compile Include="Api\V1\Entities\Rate\RateResponse.cs" />
     <Compile Include="Api\V1\Entities\Shipment\Contents.cs" />
     <Compile Include="Api\V1\Entities\Shipment\Customs.cs" />
     <Compile Include="Api\V1\Entities\Time\TransitTime.cs" />

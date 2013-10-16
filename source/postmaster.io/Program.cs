@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
+using Postmaster.io.Api.V1.Entities.Rate;
 using Postmaster.io.Api.V1.Entities.Shipment;
 using Postmaster.io.Api.V1.Entities.Time;
 using Postmaster.io.Api.V1.Entities.Validation;
@@ -163,6 +164,29 @@ namespace Postmaster.io
             //    Debug.WriteLine(time.Service);
             //    Debug.WriteLine(time.DeliveryTimestamp);
             //}
+
+            #endregion
+
+            #region Get Rate
+
+            //curl https://api.postmaster.io/v1/rates \
+            //    -u 0b9a54438fba2dc0d39be8f7c6c71a58: \
+            //    -d "from_zip=28771" \
+            //    -d "to_zip=78704" \
+            //    -d "weight=1.0" \
+            //    -d "carrier=ups"
+
+            //Rate rateArgs = new Rate
+            //{
+            //    FromZip = "28771",
+            //    ToZip = "78704",
+            //    Weight = 1.0,
+            //    Carrier = "ups"
+            //};
+
+            //var result = Rate.GetRate(rateArgs);
+            //Debug.WriteLine(result.Charge);
+            //Debug.WriteLine(rateArgs.GetRate().Charge);
 
             #endregion
         }

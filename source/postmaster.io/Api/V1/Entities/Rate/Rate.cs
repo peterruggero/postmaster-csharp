@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-using Postmaster.io.Api.V1.Entities.Helper;
+﻿using Newtonsoft.Json;
 using Postmaster.io.Api.V1.Handlers;
 
-namespace Postmaster.io.Api.V1.Entities.Time
+namespace Postmaster.io.Api.V1.Entities.Rate
 {
     /// <summary>
-    /// Time.
+    /// Rate.
     /// </summary>
-    public class TransitTime
+    public class Rate
     {
         #region Properties
 
@@ -33,36 +31,36 @@ namespace Postmaster.io.Api.V1.Entities.Time
         [JsonProperty("commercial", NullValueHandling = NullValueHandling.Ignore)]
         public bool Commercial { get; set; }
 
-        [JsonProperty("delivery_timestamp", NullValueHandling = NullValueHandling.Ignore)]
-        public int DeliveryTimestamp { get; set; }
-
         [JsonProperty("service", NullValueHandling = NullValueHandling.Ignore)]
         public string Service { get; set; }
 
-        [JsonIgnore]
-        private const string Resource = "times";
+        [JsonProperty("packaging", NullValueHandling = NullValueHandling.Ignore)]
+        public string Packaging { get; set; }
+
+        [JsonIgnore] 
+        private const string Resource = "rates";
 
         #endregion
 
         #region Functions
 
         /// <summary>
-        /// Get this transit times.
+        /// Get Rate.
         /// </summary>
-        /// <returns>TimeResponse or null.</returns>
-        public List<TransitTime> GetTimes()
+        /// <returns>Rate or null.</returns>
+        public RateResponse GetRate()
         {
             // serialize shipment
             string postBody = JsonConvert.SerializeObject(this,
                 new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Ignore });
 
-            // https://api.postmaster.io/v1/times
+            // https://api.postmaster.io/v1/rates
             string url = "{0}/{1}/{2}";
             url = string.Format(url, Config.BaseUri, Config.Version, Resource);
 
             string response = Request.Post(url, postBody);
 
-            return response != null ? JsonConvert.DeserializeObject<TransitTimeResponse>(response).Services : null;
+            return response != null ? JsonConvert.DeserializeObject<RateResponse>(response) : null;
         }
 
         #endregion
@@ -70,23 +68,23 @@ namespace Postmaster.io.Api.V1.Entities.Time
         #region Utilities
 
         /// <summary>
-        /// Get transit times.
+        /// Get Rate.
         /// </summary>
-        /// <param name="transitTime">TransitTime.</param>
-        /// <returns>TimeResponse or null.</returns>
-        public static List<TransitTime> GetTimes(TransitTime transitTime)
+        /// <param name="rate">Rate.</param>
+        /// <returns>Rate or null.</returns>
+        public static RateResponse GetRate(Rate rate)
         {
             // serialize shipment
-            string postBody = JsonConvert.SerializeObject(transitTime,
+            string postBody = JsonConvert.SerializeObject(rate,
                 new JsonSerializerSettings {DefaultValueHandling = DefaultValueHandling.Ignore});
 
-            // https://api.postmaster.io/v1/times
+            // https://api.postmaster.io/v1/rates
             string url = "{0}/{1}/{2}";
             url = string.Format(url, Config.BaseUri, Config.Version, Resource);
 
             string response = Request.Post(url, postBody);
 
-            return response != null ? JsonConvert.DeserializeObject<TransitTimeResponse>(response).Services : null;
+            return response != null ? JsonConvert.DeserializeObject<RateResponse>(response) : null;
         }
 
         #endregion
