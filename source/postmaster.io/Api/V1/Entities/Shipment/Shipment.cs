@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using Newtonsoft.Json;
+using Postmaster.io.Api.V1.Entities.Tracking;
 using Postmaster.io.Api.V1.Handlers;
-using Postmaster.io.Api.V1.Resources;
 
 namespace Postmaster.io.Api.V1.Entities.Shipment
 {
@@ -18,7 +18,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         public string Status { get; set; }
 
         [JsonProperty("tracking", NullValueHandling = NullValueHandling.Ignore)]
-        public List<string> Tracking { get; set; }
+        public List<string> TrackingNo { get; set; }
 
         [JsonProperty("prepaid", NullValueHandling = NullValueHandling.Ignore)]
         public bool Prepaid { get; set; }
@@ -61,6 +61,12 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
 
         [JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
         public long Id { get; set; }
+
+        [JsonProperty("message", NullValueHandling = NullValueHandling.Ignore)]
+        public string ErrorMessage { get; set; }
+
+        [JsonProperty("code", NullValueHandling = NullValueHandling.Ignore)]
+        public int ErrorCode { get; set; }
 
         [JsonIgnore]
         public string ReferenceNo { get; set; }
@@ -106,13 +112,15 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         /// Track this shipment.
         /// </summary>
         /// <returns>TO DO</returns>
-        public string Track()
+        public List<Result> Track()
         {
             // https://api.postmaster.io/v1/shipments/1234/track
             string url = "{0}/{1}/{2}/{3}/track";
             url = string.Format(url, Config.BaseUri, Config.Version, Resource, Id);
 
-            return Request.Get(url, null);
+            string response = Request.Get(url, null);
+
+            return response != null ? JsonConvert.DeserializeObject<List<Result>>(response) : null;
         }
 
         /// <summary>
@@ -193,31 +201,35 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         }
 
         /// <summary>
-        /// Track package by shipment Id.
+        /// Track Shipment by Id.
         /// </summary>
-        /// <param name="id">Id.</param>
-        /// <returns>TO DO</returns>
-        public static string Track(long id)
+        /// <param name="id">Shipment Id.</param>
+        /// <returns>Result collection.</returns>
+        public static List<Result> Track(long id)
         {
             // https://api.postmaster.io/v1/shipments/1234/track
             string url = "{0}/{1}/{2}/{3}/track";
             url = string.Format(url, Config.BaseUri, Config.Version, Resource, id);
 
-            return Request.Get(url, null);
+            string response = Request.Get(url, null);
+
+            return response != null ? JObjectMapper.ResultArrayToModel(response) : null;
         }
 
         /// <summary>
-        /// Track package by reference number.
+        /// Track Shipment by reference number.
         /// </summary>
-        /// <param name="referenceNo">Reference number.</param>
-        /// <returns>TO DO</returns>
-        public static string Track(string referenceNo)
+        /// <param name="referenceNumber">Reference number.</param>
+        /// <returns>Result.</returns>
+        public static Result Track(string referenceNumber)
         {
             // https://api.postmaster.io/v1/track?tracking=1Z1896X70305267337
             string url = "{0}/{1}/track?tracking={2}";
-            url = string.Format(url, Config.BaseUri, Config.Version, referenceNo);
+            url = string.Format(url, Config.BaseUri, Config.Version, referenceNumber);
 
-            return Request.Get(url, null);
+            string response = Request.Get(url, null);
+
+            return response != null ? JsonConvert.DeserializeObject<Result>(response) : null;
         }
 
         #endregion

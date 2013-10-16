@@ -49,12 +49,11 @@ namespace Postmaster.io.Api.V1.Handlers
             catch (WebException e)
             {
                 //var resp = (HttpWebResponse) e.Response;
-                string responseBody;
                 using (var reader = new StreamReader(e.Response.GetResponseStream()))
                 {
-                    responseBody = reader.ReadToEnd();
+                    response = reader.ReadToEnd();
                 }
-                ErrorHandlingManager.ReportError(e.Message, responseBody, "Request.cs", "Post");
+                ErrorHandlingManager.ReportError(e.Message, response, "Request.cs", "Post");
             }
             catch (Exception e)
             {
@@ -85,9 +84,9 @@ namespace Postmaster.io.Api.V1.Handlers
         }
 
         /// <summary>
-        /// GET with specified url, dataType and headers.
+        /// GET data with specified URL, data type and headers.
         /// </summary>
-        /// <param name="url">URL.</param>
+        /// <param name="url">Url.</param>
         /// <param name="acceptType">Accept type.</param>
         /// <param name="headers">Headers.</param>
         public static string Get(string url, WebHeaderCollection headers, string acceptType = "application/json")
@@ -109,11 +108,17 @@ namespace Postmaster.io.Api.V1.Handlers
             }
             catch (WebException e)
             {
-                ErrorHandlingManager.ReportError(e.Message, "Request.cs", "Get");
+                //var resp = (HttpWebResponse) e.Response;
+                //string responseBody;
+                using (var reader = new StreamReader(e.Response.GetResponseStream()))
+                {
+                    response = reader.ReadToEnd();
+                }
+                ErrorHandlingManager.ReportError(e.Message, response, "Request.cs", "Post");
             }
             catch (Exception e)
             {
-                ErrorHandlingManager.ReportError(e.Message, "Request.cs", "Get");
+                ErrorHandlingManager.ReportError(e.Message, "Request.cs", "Post");
             }
             return response;
         }
