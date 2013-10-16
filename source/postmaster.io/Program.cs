@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using System.Diagnostics;
 using Postmaster.io.Api.V1.Entities.Shipment;
 using Postmaster.io.Api.V1.Entities.Time;
 using Postmaster.io.Api.V1.Entities.Validation;
+using Postmaster.io.Api.V1.Entities.Webhook;
 
 namespace Postmaster.io
 {
@@ -101,6 +103,30 @@ namespace Postmaster.io
 
             //var result = Shipment.Track("1ZW470V80310800043");
             //Debug.WriteLine(result.Status);
+
+            #endregion
+
+            #region Monitor external package
+
+            //Webhook hook = new Webhook
+            //{
+            //    TrackingNumber = "1ZW470V80310800043",
+            //    Url = "sampleurl",
+            //    Events = new List<string>
+            //    {
+            //        "Delivered",
+            //        "Exception"
+            //    }
+            //};
+            //var result = Webhook.MonitorExternalPackage(hook);
+            //Debug.WriteLine(result.Event);
+
+            #endregion
+
+            #region Void Shipment
+
+            //var result = Shipment.Void(5865619656278016);
+            //Debug.WriteLine(result);
 
             #endregion
 
