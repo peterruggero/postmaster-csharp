@@ -42,6 +42,7 @@
     <Compile Include="Api\V1\Entities\Time\TransitTime.cs" />
     <Compile Include="Api\V1\Entities\Time\TransitTimeResponse.cs" />
     <Compile Include="Api\V1\Entities\Webhook\Webhook.cs" />
+    <Compile Include="Api\V1\Entities\Webhook\WebhookResponse.cs" />
     <Compile Include="Api\V1\JObjectMapper.cs" />
     <Compile Include="Api\V1\Resources\StatusCode.cs" />
     <Compile Include="Api\V1\Entities\Tracking\History.cs" />
