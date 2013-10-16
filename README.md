@@ -8,7 +8,7 @@ Development Progress
   <ul>
     <li>Create (Ship)</li>
     <ul><li>LSO</li></ul>
-    <li>Track</li>
+    <li><del>Track</del></li>
     <li><del>Track by reference</del></li>
     <li>Monitor external package</li>
     <li>Void</li>
