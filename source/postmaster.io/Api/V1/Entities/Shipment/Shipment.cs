@@ -8,7 +8,7 @@ using Postmaster.io.Api.V1.Handlers;
 namespace Postmaster.io.Api.V1.Entities.Shipment
 {
     /// <summary>
-    /// Shipment; root entity.
+    /// Shipment.
     /// </summary>
     public class Shipment : BaseEntity
     {
@@ -158,10 +158,10 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
                 new JsonSerializerSettings {DefaultValueHandling = DefaultValueHandling.Ignore});
 
             // https://api.postmaster.io/v1/shipments
-            string url = "{0}/{1}/{3}";
+            string url = "{0}/{1}/{2}";
             url = string.Format(url, Config.BaseUri, Config.Version, Resource);
 
-            string response = Request.Post(url, null, postBody);
+            string response = Request.Post(url, postBody);
 
             return response != null ? JsonConvert.DeserializeObject<Shipment>(response) : null;
         }

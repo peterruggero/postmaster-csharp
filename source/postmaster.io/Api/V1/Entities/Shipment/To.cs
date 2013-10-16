@@ -7,15 +7,6 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
     /// </summary>
     public class To : BaseEntity
     {
-        #region Declarations
-
-        /// <summary>
-        /// To constructor.
-        /// </summary>
-        public To() { }
-
-        #endregion
-
         #region Properties
 
         [JsonProperty("city")]
