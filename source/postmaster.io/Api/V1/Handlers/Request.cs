@@ -36,7 +36,7 @@ namespace Postmaster.io.Api.V1.Handlers
                         Convert.ToBase64String(Encoding.ASCII.GetBytes(Config.ApiKey + ":" + Config.Password));
 
                     // set headers and related properties
-                    wc.Headers.Add(HttpRequestHeader.ContentType, "application/json");
+                    wc.Headers.Add(HttpRequestHeader.ContentType, contentType);
                     wc.Headers.Add(HttpRequestHeader.Authorization, "Basic " + credentials);
                     wc.Headers.Add(HttpRequestHeader.Accept, "application/json");
                     wc.Headers.Add(HttpRequestHeader.UserAgent, Config.UserAgent);
@@ -70,7 +70,10 @@ namespace Postmaster.io.Api.V1.Handlers
         public static HttpStatusCode? Delete(string url)
         {
             WebRequest request = WebRequest.Create(url);
+            string credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes(Config.ApiKey + ":" + Config.Password));
+
             request.Method = "DELETE";
+            request.Headers[HttpRequestHeader.Authorization] = "Basic " + credentials;
 
             Dictionary<HttpStatusCode?, string> response = ReadHandledResponse(request as HttpWebRequest);
             if (response.Count == 1)

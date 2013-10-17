@@ -84,7 +84,8 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         /// <returns>ResponseEntity.</returns>
         public Shipment Create()
         {
-            string postBody = JsonConvert.SerializeObject(this);
+            string postBody = JsonConvert.SerializeObject(this,
+                new JsonSerializerSettings {DefaultValueHandling = DefaultValueHandling.Ignore});
 
             // https://api.postmaster.io/v1/shipments
             string url = "{0}/{1}/{2}";
