@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
@@ -92,7 +93,8 @@ namespace Postmaster.io.Api.V1.Handlers
         /// <param name="url">Url.</param>
         /// <param name="acceptType">Accept type.</param>
         /// <param name="headers">Headers.</param>
-        public static string Get(string url, WebHeaderCollection headers, string acceptType = "application/json")
+        /// <param name="queryStrings">Query String collection (optional).</param>
+        public static string Get(string url, WebHeaderCollection headers = null, string acceptType = "application/json", NameValueCollection queryStrings = null)
         {
             string response = null;
             try
@@ -101,6 +103,12 @@ namespace Postmaster.io.Api.V1.Handlers
                 {
                     string credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes(Config.ApiKey + ":" + Config.Password));
                     wc.Headers[HttpRequestHeader.Authorization] = "Basic " + credentials;
+
+                    // query strings
+                    if (queryStrings != null)
+                    {
+                        wc.QueryString = queryStrings;
+                    }
 
                     // no 401 from server?
                     // wc.Credentials = new NetworkCredential(Config.ApiKey, Config.Password);

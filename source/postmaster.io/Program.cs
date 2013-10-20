@@ -13,32 +13,32 @@ namespace Postmaster.io
         public static void Main(string[] args)
         {
             #region Create shipments
-            // new shipment
-            var shipment = new Shipment
-            {
-                To = new To
-                {
-                    Company = "ASLS",
-                    Contact = "Joe Smith",
-                    Line1 = "1110 Someplace Ave.",
-                    City = "Austin",
-                    State = "TX",
-                    ZipCode = "78704",
-                    PhoneNo = "5551234444",
-                    Residential = true
-                },
-                Carrier = "ups",
-                Service = "2day",
-                Package = new Package
-                {
-                    Weight = 1.5,
-                    Length = 10,
-                    Width = 6,
-                    Height = 8
-                },
-            };
-            shipment = shipment.Create();
-            Debug.WriteLine(shipment.Id);
+            //// new shipment
+            //var shipment = new Shipment
+            //{
+            //    To = new To
+            //    {
+            //        Company = "ASLS",
+            //        Contact = "Joe Smith",
+            //        Line1 = "1110 Someplace Ave.",
+            //        City = "Austin",
+            //        State = "TX",
+            //        ZipCode = "78704",
+            //        PhoneNo = "5551234444",
+            //        Residential = true
+            //    },
+            //    Carrier = "ups",
+            //    Service = "2day",
+            //    Package = new Package
+            //    {
+            //        Weight = 1.5,
+            //        Length = 10,
+            //        Width = 6,
+            //        Height = 8
+            //    },
+            //};
+            //shipment = shipment.Create();
+            //Debug.WriteLine(shipment.Id);
 
             //Debug.WriteLine(shipment.To.City);
             //shipment = Shipment.Create(shipment);
@@ -92,6 +92,18 @@ namespace Postmaster.io
 
             #endregion
 
+            #region Get Shipments
+
+            //var shipments = Shipments.All(10, status: "Voided");
+
+            //foreach (var shipmentResult in shipments.Results)
+            //{
+            //    Debug.WriteLine(shipmentResult.Id + " : " + shipmentResult.Status);
+            //}
+            //Debug.WriteLine("done...");
+
+            #endregion
+
             #region Track
 
             //var results = Shipment.Track(shipment.Id);
@@ -128,9 +140,8 @@ namespace Postmaster.io
 
             #region Void Shipment
 
-
-            var status = Shipment.Void(shipment.Id);
-            Debug.WriteLine(status);
+            //var status = Shipment.Void(shipment.Id);
+            //Debug.WriteLine(status);
 
             #endregion
 

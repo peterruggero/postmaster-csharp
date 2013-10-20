@@ -18,7 +18,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         public string Status { get; set; }
 
         [JsonProperty("tracking", NullValueHandling = NullValueHandling.Ignore)]
-        public List<string> TrackingNo { get; set; }
+        public List<string> Tracking { get; set; }
 
         [JsonProperty("prepaid", NullValueHandling = NullValueHandling.Ignore)]
         public bool Prepaid { get; set; }
@@ -67,6 +67,12 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
 
         [JsonProperty("code", NullValueHandling = NullValueHandling.Ignore)]
         public int ErrorCode { get; set; }
+
+        [JsonProperty("signature", NullValueHandling = NullValueHandling.Ignore)]
+        public string Signature { get; set; }
+
+        [JsonProperty("label", NullValueHandling = NullValueHandling.Ignore)]
+        public Label Label { get; set; }
 
         [JsonIgnore]
         public string ReferenceNo { get; set; }

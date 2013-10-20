@@ -45,6 +45,8 @@
     <Compile Include="Api\V1\Entities\Rate\RateResponse.cs" />
     <Compile Include="Api\V1\Entities\Shipment\Contents.cs" />
     <Compile Include="Api\V1\Entities\Shipment\Customs.cs" />
+    <Compile Include="Api\V1\Entities\Shipment\Label.cs" />
+    <Compile Include="Api\V1\Entities\Shipment\Shipments.cs" />
     <Compile Include="Api\V1\Entities\Time\TransitTime.cs" />
     <Compile Include="Api\V1\Entities\Time\TransitTimeResponse.cs" />
     <Compile Include="Api\V1\Entities\Webhook\Webhook.cs" />
