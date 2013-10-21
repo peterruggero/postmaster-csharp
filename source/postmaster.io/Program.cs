@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
+using Postmaster.io.Api.V1.Entities.Box;
 using Postmaster.io.Api.V1.Entities.Rate;
 using Postmaster.io.Api.V1.Entities.Shipment;
 using Postmaster.io.Api.V1.Entities.Time;
@@ -201,6 +202,26 @@ namespace Postmaster.io
             //var result = Rate.GetRate(rateArgs);
             //Debug.WriteLine(result.Charge);
             //Debug.WriteLine(rateArgs.GetRate().Charge);
+
+            #endregion
+
+            #region Create Box
+
+            var box = new Box
+            {
+                Width = 10,
+                Height = 12,
+                Length = 8,
+                Name = "My Fun Box"
+            };
+
+            // instance
+            var boxResult = box.Create();
+            Debug.WriteLine(boxResult.Id);
+
+            // static
+            boxResult = Box.Create(box);
+            Debug.WriteLine(boxResult.Id);
 
             #endregion
         }
