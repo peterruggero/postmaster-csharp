@@ -35,6 +35,7 @@
     <Compile Include="Api\V1\Controllers\ValidationController.cs" />
     <Compile Include="Api\V1\Entities\BaseEntity.cs" />
     <Compile Include="Api\V1\Entities\Box\Box.cs" />
+    <Compile Include="Api\V1\Entities\Box\Boxes.cs" />
     <Compile Include="Api\V1\Entities\Box\BoxItem.cs" />
     <Compile Include="Api\V1\Entities\Box\Fit.cs" />
     <Compile Include="Api\V1\Entities\Box\FitResponse.cs" />

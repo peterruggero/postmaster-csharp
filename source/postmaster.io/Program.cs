@@ -207,21 +207,31 @@ namespace Postmaster.io
 
             #region Create Box
 
-            var box = new Box
-            {
-                Width = 10,
-                Height = 12,
-                Length = 8,
-                Name = "My Fun Box"
-            };
+            //var box = new Box
+            //{
+            //    Width = 10,
+            //    Height = 12,
+            //    Length = 8,
+            //    Name = "My Fun Box"
+            //};
 
-            // instance
-            var boxResult = box.Create();
-            Debug.WriteLine(boxResult.Id);
+            //// instance
+            //var boxResult = box.Create();
+            //Debug.WriteLine(boxResult.Id);
 
-            // static
-            boxResult = Box.Create(box);
-            Debug.WriteLine(boxResult.Id);
+            //// static
+            //boxResult = Box.Create(box);
+            //Debug.WriteLine(boxResult.Id);
+
+            #endregion
+
+            #region List Boxes
+
+            //var boxes = Boxes.All();
+            //foreach (var box in boxes.Results)
+            //{
+            //    Debug.WriteLine(box.Id + " : " + box.Name);
+            //}
 
             #endregion
         }

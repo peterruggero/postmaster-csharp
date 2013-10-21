@@ -86,6 +86,5 @@ namespace Postmaster.io.Api.V1.Entities.Box
 
 
         #endregion
-
     }
 }
