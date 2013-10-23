@@ -50,7 +50,5 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         }
 
         #endregion
-
-
     }
 }

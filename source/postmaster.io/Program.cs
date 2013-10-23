@@ -153,90 +153,83 @@ namespace Postmaster.io
 
             #region Validate address
 
-            //Address address = new Address
-            //{
-            //    Company = "ACME",
-            //    Contact = "Joe Smith",
-            //    Line1 = "100 Congress Ave.",
-            //    City = "Austin",
-            //    State = "TX",
-            //    ZipCode = "78701"
-            //};
-            //var result = address.Validate();
-            //Debug.WriteLine(result.Status);
+            Address address = new Address
+            {
+                Company = "ACME",
+                Contact = "Joe Smith",
+                Line1 = "100 Congress Ave.",
+                City = "Austin",
+                State = "TX",
+                ZipCode = "78701"
+            };
+            var result = address.Validate();
+            Debug.WriteLine(result.Status);
 
             #endregion
 
             #region Get Transit Times
 
-            //TransitTime timeArgs = new TransitTime
-            //{
-            //    Carrier = "USPS",
-            //    Commercial = false,
-            //    FromZip = "74104",
-            //    ToZip = "74003",
-            //    Weight = 5.5
-            //};
+            TransitTime timeArgs = new TransitTime
+            {
+                Carrier = "UPS",
+                Commercial = false,
+                FromZip = "74104",
+                ToZip = "74003",
+                Weight = 5.5
+            };
 
-            //var times = TransitTime.GetTimes(timeArgs);
-            //foreach (var time in times)
-            //{
-            //    Debug.WriteLine(time.Service);
-            //    Debug.WriteLine(time.DeliveryTimestamp);
-            //}
+            var times = TransitTime.GetTimes(timeArgs);
+            foreach (var time in times)
+            {
+                Debug.WriteLine(time.Service);
+                Debug.WriteLine(time.DeliveryTimestamp);
+            }
 
             #endregion
 
             #region Get Rate
 
-            //curl https://api.postmaster.io/v1/rates \
-            //    -u 0b9a54438fba2dc0d39be8f7c6c71a58: \
-            //    -d "from_zip=28771" \
-            //    -d "to_zip=78704" \
-            //    -d "weight=1.0" \
-            //    -d "carrier=ups"
+            Rate rateArgs = new Rate
+            {
+                FromZip = "28771",
+                ToZip = "78704",
+                Weight = 1.0,
+                Carrier = "ups"
+            };
 
-            //Rate rateArgs = new Rate
-            //{
-            //    FromZip = "28771",
-            //    ToZip = "78704",
-            //    Weight = 1.0,
-            //    Carrier = "ups"
-            //};
-
-            //var result = Rate.GetRate(rateArgs);
-            //Debug.WriteLine(result.Charge);
-            //Debug.WriteLine(rateArgs.GetRate().Charge);
+            var result4 = Rate.GetRate(rateArgs);
+            Debug.WriteLine(result4.Charge);
+            Debug.WriteLine(rateArgs.GetRate().Charge);
 
             #endregion
 
             #region Create Box
 
-            //var box = new Box
-            //{
-            //    Width = 10,
-            //    Height = 12,
-            //    Length = 8,
-            //    Name = "My Fun Box"
-            //};
+            var box = new Box
+            {
+                Width = 10,
+                Height = 12,
+                Length = 8,
+                Name = "My Fun Box"
+            };
 
-            //// instance
-            //var boxResult = box.Create();
-            //Debug.WriteLine(boxResult.Id);
+            // instance
+            var boxResult = box.Create();
+            Debug.WriteLine(boxResult.Id);
 
-            //// static
-            //boxResult = Box.Create(box);
-            //Debug.WriteLine(boxResult.Id);
+            // static
+            boxResult = Box.Create(box);
+            Debug.WriteLine(boxResult.Id);
 
             #endregion
 
             #region List Boxes
 
-            //var boxes = Boxes.All();
-            //foreach (var box in boxes.Results)
-            //{
-            //    Debug.WriteLine(box.Id + " : " + box.Name);
-            //}
+            var boxes = Boxes.All();
+            foreach (var box1 in boxes.Results)
+            {
+                Debug.WriteLine(box1.Id + " : " + box1.Name);
+            }
 
             #endregion
 
@@ -250,42 +243,42 @@ namespace Postmaster.io
             //    ]
             //    }'
 
-            //FitRequest fitRequest = new FitRequest
-            //{
-            //   Items = new List<Item>
-            //   {
-            //       new Item
-            //       {
-            //           Width = 2.2,
-            //           Length = 3,
-            //           Height = 1,
-            //           Count = 2
-            //       }
-            //   },
-            //   Packages = new List<Box>
-            //   {
-            //       new Box
-            //       {
-            //           Width = 6,
-            //           Length = 6,
-            //           Height = 6,
-            //           Sku = "123ABC"
-            //       },
-            //       new Box
-            //       {
-            //           Width = 12,
-            //           Length = 12,
-            //           Height = 12,
-            //           Sku = "456XYZ"
-            //       }
-            //   }
-            //};
+            FitRequest fitRequest = new FitRequest
+            {
+                Items = new List<Item>
+               {
+                   new Item
+                   {
+                       Width = 2.2,
+                       Length = 3,
+                       Height = 1,
+                       Count = 2
+                   }
+               },
+                Packages = new List<Box>
+               {
+                   new Box
+                   {
+                       Width = 6,
+                       Length = 6,
+                       Height = 6,
+                       Sku = "123ABC"
+                   },
+                   new Box
+                   {
+                       Width = 12,
+                       Length = 12,
+                       Height = 12,
+                       Sku = "456XYZ"
+                   }
+               }
+            };
 
-            //var fitResponse = fitRequest.Fit();
-            //foreach (var box in fitResponse.Boxes)
-            //{
-            //    Debug.WriteLine(box.ImageUrl);
-            //}
+            var fitResponse = fitRequest.Fit();
+            foreach (var box2 in fitResponse.Boxes)
+            {
+                Debug.WriteLine(box2.ImageUrl);
+            }
 
             #endregion
         }

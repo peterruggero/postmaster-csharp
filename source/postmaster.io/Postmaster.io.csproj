@@ -82,7 +82,5 @@
   <ItemGroup>
     <Content Include="Libraries\Newtonsoft.Json.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Api\V1\Entities\Webhook\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>
