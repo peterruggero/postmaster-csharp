@@ -2,12 +2,12 @@
 using Newtonsoft.Json;
 using Postmaster.io.Api.V1.Handlers;
 
-namespace Postmaster.io.Api.V1.Entities.Webhook
+namespace Postmaster.io.Api.V1.Entities.Shipment
 {
     /// <summary>
-    /// Webhook.
+    /// ExternalPackage..
     /// </summary>
-    public class Webhook
+    public class ExternalPackage
     {
         #region Properties
 
@@ -33,8 +33,8 @@ namespace Postmaster.io.Api.V1.Entities.Webhook
         /// <summary>
         /// Monitor external package.
         /// </summary>
-        /// <returns>WebhookResponse or null.</returns>
-        public static WebhookResponse MonitorExternalPackage(Webhook webhook)
+        /// <returns>ExternalPackageResponse or null.</returns>
+        public static ExternalPackageResponse MonitorExternalPackage(ExternalPackage webhook)
         {
             // serialize shipment
             string postBody = JsonConvert.SerializeObject(webhook,
@@ -46,7 +46,7 @@ namespace Postmaster.io.Api.V1.Entities.Webhook
 
             string response = Request.Post(url, postBody);
 
-            return response != null ? JsonConvert.DeserializeObject<WebhookResponse>(response) : null;
+            return response != null ? JsonConvert.DeserializeObject<ExternalPackageResponse>(response) : null;
         }
 
         #endregion

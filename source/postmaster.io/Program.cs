@@ -5,7 +5,6 @@ using Postmaster.io.Api.V1.Entities.Rate;
 using Postmaster.io.Api.V1.Entities.Shipment;
 using Postmaster.io.Api.V1.Entities.Time;
 using Postmaster.io.Api.V1.Entities.Validation;
-using Postmaster.io.Api.V1.Entities.Webhook;
 
 namespace Postmaster.io
 {
@@ -14,38 +13,38 @@ namespace Postmaster.io
         public static void Main(string[] args)
         {
             #region Create shipments
-            //// new shipment
-            //var shipment = new Shipment
-            //{
-            //    To = new To
-            //    {
-            //        Company = "ASLS",
-            //        Contact = "Joe Smith",
-            //        Line1 = "1110 Someplace Ave.",
-            //        City = "Austin",
-            //        State = "TX",
-            //        ZipCode = "78704",
-            //        PhoneNo = "5551234444",
-            //        Residential = true
-            //    },
-            //    Carrier = "ups",
-            //    Service = "2day",
-            //    Package = new Package
-            //    {
-            //        Weight = 1.5,
-            //        Length = 10,
-            //        Width = 6,
-            //        Height = 8
-            //    },
-            //};
-            //shipment = shipment.Create();
-            //Debug.WriteLine(shipment.Id);
+            // new shipment
+            var shipment = new Shipment
+            {
+                To = new To
+                {
+                    Company = "ASLS",
+                    Contact = "Joe Smith",
+                    Line1 = "1110 Someplace Ave.",
+                    City = "Austin",
+                    State = "TX",
+                    ZipCode = "78704",
+                    PhoneNo = "5551234444",
+                    Residential = true
+                },
+                Carrier = "ups",
+                Service = "2day",
+                Package = new Package
+                {
+                    Weight = 1.5,
+                    Length = 10,
+                    Width = 6,
+                    Height = 8
+                },
+            };
+            shipment = shipment.Create();
+            Debug.WriteLine("Shipment created: " + shipment.Id);
 
             //Debug.WriteLine(shipment.To.City);
             //shipment = Shipment.Create(shipment);
             //Debug.WriteLine(shipment.From.City);
 
-            // new international shipment
+            //// new international shipment
             //var intlShipment = new Shipment
             //{
             //    To = new To
@@ -71,7 +70,7 @@ namespace Postmaster.io
             //        Customs = new Customs
             //        {
             //            Type = "Other",
-            //            Description = "Some great stuff.",
+            //            Comments = "Some great stuff.",
             //            Contents = new List<Dictionary<string, object>>
             //            {
             //                new Dictionary<string, object>
@@ -89,53 +88,59 @@ namespace Postmaster.io
             //    }
             //};
             //intlShipment = intlShipment.Create();
-            //Debug.WriteLine(intlShipment.TrackingNo[0] + ": " + intlShipment.To.City);
+            //Debug.WriteLine(intlShipment.Tracking[0] + ": " + intlShipment.To.City);
 
             #endregion
 
             #region Get Shipments
 
-            //var shipments = Shipments.All(10, status: "Voided");
+            var shipments = Shipments.All(10, status: "Voided");
+            if (shipment != null)
+            {
 
-            //foreach (var shipmentResult in shipments.Results)
-            //{
-            //    Debug.WriteLine(shipmentResult.Id + " : " + shipmentResult.Status);
-            //}
-            //Debug.WriteLine("done...");
+                foreach (var shipmentResult in shipments.Results)
+                {
+                    Debug.WriteLine("Get shipments: " + shipmentResult.Id + "-" + shipmentResult.Status);
+                }
+                Debug.WriteLine("done...");
+            }
 
             #endregion
 
             #region Track
 
-            //var results = Shipment.Track(shipment.Id);
-            //foreach (var result in results)
-            //{
-            //    Debug.WriteLine(result.Status);
-            //}
+            var results = Shipment.Track(shipment.Id);
+            if (results != null)
+            {
+                foreach (var result1 in results)
+                {
+                    Debug.WriteLine(result1.Status);
+                }
+            }
 
             #endregion
 
             #region Track by Reference
 
-            //var result = Shipment.Track("1ZW470V80310800043");
-            //Debug.WriteLine(result.Status);
+            var result2 = Shipment.Track("1ZW470V80310800043");
+            Debug.WriteLine(result2.Status);
 
             #endregion
 
             #region Monitor external package
 
-            //Webhook hook = new Webhook
-            //{
-            //    TrackingNumber = "1ZW470V80310800043",
-            //    Url = "sampleurl",
-            //    Events = new List<string>
-            //    {
-            //        "Delivered",
-            //        "Exception"
-            //    }
-            //};
-            //var result = Webhook.MonitorExternalPackage(hook);
-            //Debug.WriteLine(result.Event);
+            ExternalPackage hook = new ExternalPackage
+            {
+                TrackingNumber = "1ZW470V80310800043",
+                Url = "sampleurl",
+                Events = new List<string>
+                {
+                    "Delivered",
+                    "Exception"
+                }
+            };
+            var result3 = ExternalPackage.MonitorExternalPackage(hook);
+            Debug.WriteLine(result3.Event);
 
             #endregion
 
@@ -231,6 +236,55 @@ namespace Postmaster.io
             //foreach (var box in boxes.Results)
             //{
             //    Debug.WriteLine(box.Id + " : " + box.Name);
+            //}
+
+            #endregion
+
+            #region Fit Items in Box
+
+            //'{
+            //    "items":[{"width":2.2, "length":3, "height":1, "count":2}],
+            //    "packages":[
+            //    {"width":6, "length":6, "height":6, "sku":"123ABC"},
+            //    {"width":12, "length":12, "height":12, "sku":"456XYZ"}
+            //    ]
+            //    }'
+
+            //FitRequest fitRequest = new FitRequest
+            //{
+            //   Items = new List<Item>
+            //   {
+            //       new Item
+            //       {
+            //           Width = 2.2,
+            //           Length = 3,
+            //           Height = 1,
+            //           Count = 2
+            //       }
+            //   },
+            //   Packages = new List<Box>
+            //   {
+            //       new Box
+            //       {
+            //           Width = 6,
+            //           Length = 6,
+            //           Height = 6,
+            //           Sku = "123ABC"
+            //       },
+            //       new Box
+            //       {
+            //           Width = 12,
+            //           Length = 12,
+            //           Height = 12,
+            //           Sku = "456XYZ"
+            //       }
+            //   }
+            //};
+
+            //var fitResponse = fitRequest.Fit();
+            //foreach (var box in fitResponse.Boxes)
+            //{
+            //    Debug.WriteLine(box.ImageUrl);
             //}
 
             #endregion

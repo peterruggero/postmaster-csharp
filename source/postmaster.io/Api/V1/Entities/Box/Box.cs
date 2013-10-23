@@ -33,8 +33,14 @@ namespace Postmaster.io.Api.V1.Entities.Box
         [JsonProperty("size_units", NullValueHandling = NullValueHandling.Ignore)]
         public string SizeUnits { get; set; }
 
+        [JsonProperty("dimension_units", NullValueHandling = NullValueHandling.Ignore)]
+        public string DimensionUnits { get; set; }
+
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
+
+        [JsonProperty("sku", NullValueHandling = NullValueHandling.Ignore)]
+        public string Sku { get; set; }
 
         [JsonIgnore]
         private const string Resource = "packages";

@@ -10,10 +10,10 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; set; }
 
-        [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("format", NullValueHandling = NullValueHandling.Ignore)]
         public string Format { get; set; }
 
-        [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("size", NullValueHandling = NullValueHandling.Ignore)]
         public string Size { get; set; }
     }
 }

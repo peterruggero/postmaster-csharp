@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
 
-namespace Postmaster.io.Api.V1.Entities.Webhook
+namespace Postmaster.io.Api.V1.Entities.Shipment
 {
     /// <summary>
-    /// WebhookResponse.
+    /// ExternalPackageResponse.
     /// </summary>
-    public class WebhookResponse
+    public class ExternalPackageResponse
     {
         [JsonProperty("tracking_no")]
         public string TrackingNumber { get; set; }

@@ -29,7 +29,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         /// <param name="limit">Result limit.</param>
         /// <param name="cursor">Cursor.</param>
         /// <param name="status">Status.</param>
-        /// <returns>Shipments.</returns>
+        /// <returns>Shipments or null.</returns>
         public static Shipments All(int limit = 10, string cursor = null, string status = null)
         {
             // https://api.postmaster.io/v1/shipments

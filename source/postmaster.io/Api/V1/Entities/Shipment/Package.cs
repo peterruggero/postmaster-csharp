@@ -5,7 +5,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
     /// <summary>
     /// Package. Parent: <see cref="Shipment"/> 
     /// </summary>
-    public class Package : BaseEntity
+    public class Package
     {
         #region Declarations
 

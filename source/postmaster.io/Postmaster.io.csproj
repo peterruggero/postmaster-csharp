@@ -30,15 +30,13 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Compile Include="Api\V1\Controllers\ModelController.cs" />
-    <Compile Include="Api\V1\Controllers\TrackingController.cs" />
-    <Compile Include="Api\V1\Controllers\ValidationController.cs" />
-    <Compile Include="Api\V1\Entities\BaseEntity.cs" />
     <Compile Include="Api\V1\Entities\Box\Box.cs" />
     <Compile Include="Api\V1\Entities\Box\Boxes.cs" />
     <Compile Include="Api\V1\Entities\Box\BoxItem.cs" />
-    <Compile Include="Api\V1\Entities\Box\Fit.cs" />
+    <Compile Include="Api\V1\Entities\Box\FitRequest.cs" />
     <Compile Include="Api\V1\Entities\Box\FitResponse.cs" />
+    <Compile Include="Api\V1\Entities\Box\FitResponseBody.cs" />
+    <Compile Include="Api\V1\Entities\Box\Item.cs" />
     <Compile Include="Api\V1\Entities\Helper\UsState.cs" />
     <Compile Include="Api\V1\Entities\Helper\Carrier.cs" />
     <Compile Include="Api\V1\Entities\Helper\Service.cs" />
@@ -50,8 +48,8 @@
     <Compile Include="Api\V1\Entities\Shipment\Shipments.cs" />
     <Compile Include="Api\V1\Entities\Time\TransitTime.cs" />
     <Compile Include="Api\V1\Entities\Time\TransitTimeResponse.cs" />
-    <Compile Include="Api\V1\Entities\Webhook\Webhook.cs" />
-    <Compile Include="Api\V1\Entities\Webhook\WebhookResponse.cs" />
+    <Compile Include="Api\V1\Entities\Shipment\ExternalPackage.cs" />
+    <Compile Include="Api\V1\Entities\Shipment\ExternalPackageResponse.cs" />
     <Compile Include="Api\V1\JObjectMapper.cs" />
     <Compile Include="Api\V1\Resources\StatusCode.cs" />
     <Compile Include="Api\V1\Entities\Tracking\History.cs" />
@@ -68,8 +66,6 @@
     <Compile Include="Api\V1\Entities\Shipment\Shipment.cs" />
     <Compile Include="Api\V1\Entities\Shipment\From.cs" />
     <Compile Include="Api\V1\Entities\Shipment\Package.cs" />
-    <Compile Include="Api\V1\Controllers\ShipmentController.cs" />
-    <Compile Include="Postmaster.cs" />
     <Compile Include="Api\V1\Handlers\Request.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -85,5 +81,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Libraries\Newtonsoft.Json.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Api\V1\Entities\Webhook\" />
   </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
     /// <summary>
     /// From. Parent: <see cref="Shipment"/>
     /// </summary>
-    public class From : BaseEntity
+    public class From
     {
         #region Declarations
 

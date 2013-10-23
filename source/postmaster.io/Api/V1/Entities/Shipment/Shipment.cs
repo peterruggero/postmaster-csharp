@@ -10,7 +10,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
     /// <summary>
     /// Shipment.
     /// </summary>
-    public class Shipment : BaseEntity
+    public class Shipment
     {
         #region Properties
 
