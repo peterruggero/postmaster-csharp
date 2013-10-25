@@ -123,11 +123,11 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         {
             // https://api.postmaster.io/v1/shipments/1234/track
             string url = "{0}/{1}/{2}/{3}/track";
-            url = string.Format(url, Config.BaseUri, Config.Version, Resource, Id);
+            url = string.Format(url, Config.BaseUri, Config.Version, Resource, this.Id);
 
             string response = Request.Get(url, null);
 
-            return response != null ? JsonConvert.DeserializeObject<List<Result>>(response) : null;
+            return response != null ? JObjectMapper.ResultArrayToModel(response) : null;
         }
 
         /// <summary>

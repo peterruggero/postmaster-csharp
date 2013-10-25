@@ -60,6 +60,7 @@
     <Compile Include="Api\V1\Utility\Converter.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Managers\ErrorHandlingManager.cs" />
+    <Compile Include="Postmaster.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Api\V1\Resources\ContentType.cs" />
     <Compile Include="Api\V1\Entities\Shipment\To.cs" />
