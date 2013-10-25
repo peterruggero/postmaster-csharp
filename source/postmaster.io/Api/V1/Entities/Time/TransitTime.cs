@@ -6,7 +6,7 @@ using Postmaster.io.Api.V1.Handlers;
 namespace Postmaster.io.Api.V1.Entities.Time
 {
     /// <summary>
-    /// Time.
+    /// TransitTime.
     /// </summary>
     public class TransitTime
     {
@@ -47,7 +47,7 @@ namespace Postmaster.io.Api.V1.Entities.Time
         #region Functions
 
         /// <summary>
-        /// Get this transit times.
+        /// Get transit times.
         /// </summary>
         /// <returns>TimeResponse or null.</returns>
         public List<TransitTime> GetTimes()

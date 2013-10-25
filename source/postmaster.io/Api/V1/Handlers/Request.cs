@@ -12,18 +12,18 @@ using Postmaster.io.Managers;
 namespace Postmaster.io.Api.V1.Handlers
 {
     /// <summary>
-    /// Handle web request operations.
+    /// Request; handle web requests.
     /// </summary>
     public static class Request
     {
         /// <summary>
-        /// Post .
+        /// Post.
         /// </summary>
         /// <param name="url">URL.</param>
         /// <param name="body">Body.</param>
         /// <param name="acceptType">Accept type.</param>
         /// <param name="contentType">Content type.</param>
-        /// <returns>ResponseEntity.</returns>
+        /// <returns>Response string.</returns>
         public static string Post(string url, string body, string acceptType = "application/json",
             string contentType = "application/json")
         {
@@ -67,7 +67,7 @@ namespace Postmaster.io.Api.V1.Handlers
         /// Delete.
         /// </summary>
         /// <param name="url">URL.</param>
-        /// <returns>ResponseEntity.</returns>
+        /// <returns>HttpStatusCode or null.</returns>
         public static HttpStatusCode? Delete(string url)
         {
             WebRequest request = WebRequest.Create(url);
@@ -94,6 +94,7 @@ namespace Postmaster.io.Api.V1.Handlers
         /// <param name="acceptType">Accept type.</param>
         /// <param name="headers">Headers.</param>
         /// <param name="queryStrings">Query String collection (optional).</param>
+        /// <returns>Response string.</returns>
         public static string Get(string url, WebHeaderCollection headers = null, string acceptType = "application/json", NameValueCollection queryStrings = null)
         {
             string response = null;

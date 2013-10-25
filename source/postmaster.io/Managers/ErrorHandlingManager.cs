@@ -3,7 +3,7 @@ using System.Diagnostics;
 namespace Postmaster.io.Managers
 {
     /// <summary>
-    /// Provides basic error reporting.
+    /// Provide basic error reporting.
     /// </summary>
     public static class ErrorHandlingManager
     {

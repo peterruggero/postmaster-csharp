@@ -40,7 +40,7 @@ namespace Postmaster.io.test
                     Height = 8
                 },
                 Carrier = Carrier.Ups,
-                Service = Service.TwoDay
+                Service = "2day"
             };
 
             // post object
@@ -92,7 +92,7 @@ namespace Postmaster.io.test
                     Height = 8
                 },
                 Carrier = Carrier.Ups,
-                Service = Service.TwoDay
+                Service = "2day"
             };
 
             // post object

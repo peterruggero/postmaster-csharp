@@ -1,9 +1,9 @@
 namespace Postmaster.io.Api.V1.Resources
 {
     /// <summary>
-    /// Public request content types.
+    /// Request content types.
     /// </summary>
-    public sealed class ContentType
+    public class ContentType
     {
         public const string Json = "application/json";
         public const string Xml = "application/xml";

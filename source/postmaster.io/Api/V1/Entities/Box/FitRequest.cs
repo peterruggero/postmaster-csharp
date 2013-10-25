@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 using Postmaster.io.Api.V1.Handlers;
 
 namespace Postmaster.io.Api.V1.Entities.Box
 {
     /// <summary>
-    /// Fit.
+    /// FitRequest.
     /// </summary>
     public class FitRequest
     {
@@ -26,7 +25,7 @@ namespace Postmaster.io.Api.V1.Entities.Box
 
         #endregion
 
-
+        #region Functions
 
         /// <summary>
         /// Fit items in box with specified properties.
@@ -46,6 +45,9 @@ namespace Postmaster.io.Api.V1.Entities.Box
             return response != null ? JsonConvert.DeserializeObject<FitResponse>(response) : null;
         }
 
+        #endregion
+
+        #region Utilities
 
         /// <summary>
         /// Fit items in box with specified properties.
@@ -65,5 +67,7 @@ namespace Postmaster.io.Api.V1.Entities.Box
 
             return response != null ? JsonConvert.DeserializeObject<FitResponse>(response) : null;
         }
+
+        #endregion
     }
 }

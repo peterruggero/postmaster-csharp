@@ -7,15 +7,6 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
     /// </summary>
     public class From
     {
-        #region Declarations
-
-        /// <summary>
-        /// From constructor.
-        /// </summary>
-        public From() { }
-
-        #endregion
-
         #region Properties
 
         [JsonProperty("city", NullValueHandling = NullValueHandling.Ignore)]

@@ -1,7 +1,7 @@
 ﻿namespace Postmaster.io.Api.V1.Entities.Helper
 {
     /// <summary>
-    /// State (U.S.).
+    /// U.S. State Helper.
     /// </summary>
     public class UsState
     {

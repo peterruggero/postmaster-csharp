@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 
 namespace Postmaster.io.Api.V1.Entities.Time
 {
+    /// <summary>
+    /// TransitTimeResponse.
+    /// </summary>
     public class TransitTimeResponse
     {
         #region Properties

@@ -1,7 +1,7 @@
 ﻿namespace Postmaster.io.Api.V1.Entities.Helper
 {
     /// <summary>
-    /// Carrier.
+    /// Carrier Helper.
     /// </summary>
     public class Carrier
     {

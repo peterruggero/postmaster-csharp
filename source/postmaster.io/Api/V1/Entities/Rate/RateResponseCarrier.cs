@@ -3,7 +3,7 @@
 namespace Postmaster.io.Api.V1.Entities.Rate
 {
     /// <summary>
-    /// RateResponseCarrier; carrier specific properties for rates.
+    /// RateResponseCarrier.
     /// </summary>
     public class RateResponseCarrier
     {

@@ -12,6 +12,8 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
     /// </summary>
     public class Shipments
     {
+        #region Properties
+
         [JsonProperty("cursor", NullValueHandling = NullValueHandling.Ignore)]
         public string Cursor { get; set; }
 
@@ -22,6 +24,10 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         public List<Shipment> Results { get; set; }
 
         [JsonIgnore] private const string Resource = "shipments";
+
+        #endregion
+
+        #region Utilities
 
         /// <summary>
         /// Get all Shipments.
@@ -54,5 +60,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
             string response = Request.Get(url, queryStrings:queryStrings);
             return response != null ? JsonConvert.DeserializeObject<Shipments>(response) : null;
         }
+
+        #endregion
     }
 }

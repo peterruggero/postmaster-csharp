@@ -5,7 +5,7 @@ using Postmaster.io.Api.V1.Handlers;
 namespace Postmaster.io.Api.V1.Entities.Tracking
 {
     /// <summary>
-    /// Utility class for tracking shipments.
+    /// Tracking; utility class for tracking shipments.
     /// </summary>
     public class Tracking
     {
@@ -41,7 +41,7 @@ namespace Postmaster.io.Api.V1.Entities.Tracking
         /// Track Shipment by reference number.
         /// </summary>
         /// <param name="referenceNumber">Reference number.</param>
-        /// <returns>TO DO</returns>
+        /// <returns>Result.</returns>
         public static Result Track(string referenceNumber)
         {
             // https://api.postmaster.io/v1/shipments/1234/track

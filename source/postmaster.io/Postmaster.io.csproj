@@ -32,14 +32,12 @@
   <ItemGroup>
     <Compile Include="Api\V1\Entities\Box\Box.cs" />
     <Compile Include="Api\V1\Entities\Box\Boxes.cs" />
-    <Compile Include="Api\V1\Entities\Box\BoxItem.cs" />
     <Compile Include="Api\V1\Entities\Box\FitRequest.cs" />
     <Compile Include="Api\V1\Entities\Box\FitResponse.cs" />
     <Compile Include="Api\V1\Entities\Box\FitResponseBody.cs" />
     <Compile Include="Api\V1\Entities\Box\Item.cs" />
     <Compile Include="Api\V1\Entities\Helper\UsState.cs" />
     <Compile Include="Api\V1\Entities\Helper\Carrier.cs" />
-    <Compile Include="Api\V1\Entities\Helper\Service.cs" />
     <Compile Include="Api\V1\Entities\Rate\Rate.cs" />
     <Compile Include="Api\V1\Entities\Rate\RateResponse.cs" />
     <Compile Include="Api\V1\Entities\Rate\RateResponseCarrier.cs" />
@@ -58,7 +56,6 @@
     <Compile Include="Api\V1\Entities\Tracking\Tracking.cs" />
     <Compile Include="Api\V1\Entities\Validation\Address.cs" />
     <Compile Include="Api\V1\Entities\Validation\ValidationResponse.cs" />
-    <Compile Include="Api\V1\Utility\Converter.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Managers\ErrorHandlingManager.cs" />
     <Compile Include="Postmaster.cs" />
@@ -84,5 +81,7 @@
   <ItemGroup>
     <Content Include="Libraries\Newtonsoft.Json.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Api\V1\Utility\" />
+  </ItemGroup>
 </Project>

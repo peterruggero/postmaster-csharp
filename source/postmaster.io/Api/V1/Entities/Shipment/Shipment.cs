@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Net;
 using Newtonsoft.Json;
@@ -87,7 +86,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         /// <summary>
         /// Create this shipment.
         /// </summary>
-        /// <returns>ResponseEntity.</returns>
+        /// <returns>Shipment or null.</returns>
         public Shipment Create()
         {
             string postBody = JsonConvert.SerializeObject(this,
@@ -105,7 +104,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         /// <summary>
         /// Void this shipment.
         /// </summary>
-        /// <returns>ResponseEntity.</returns>
+        /// <returns>HttpStatusCode or null.</returns>
         public HttpStatusCode? Void()
         {
             // https://api.postmaster.io/v1/shipments/:id/void
@@ -118,7 +117,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         /// <summary>
         /// Track this shipment.
         /// </summary>
-        /// <returns>TO DO</returns>
+        /// <returns>Result collection.</returns>
         public List<Result> Track()
         {
             // https://api.postmaster.io/v1/shipments/1234/track
@@ -130,34 +129,15 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
             return response != null ? JObjectMapper.ResultArrayToModel(response) : null;
         }
 
-        /// <summary>
-        /// Validate this address.
-        /// </summary>
-        /// <returns>Bool.</returns>
-        public bool ValidateAddress()
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
 
         #region Utilities
 
         /// <summary>
-        /// Convert string to Tracking object.
-        /// </summary>
-        /// <param name="data">Json string.</param>
-        /// <returns>Tracking.</returns>
-        public static Shipment Convert(string data)
-        {
-            return JsonConvert.DeserializeObject<Shipment>(data);
-        }
-
-        /// <summary>
         /// Create shipment.
         /// </summary>
         /// <param name="shipment">Shipment.</param>
-        /// <returns>Shipment response or null.</returns>
+        /// <returns>Shipment or null.</returns>
         public static Shipment Create(Shipment shipment)
         {
             // serialize shipment
@@ -177,7 +157,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         /// Void shipment by Id.
         /// </summary>
         /// <param name="id">Id.</param>
-        /// <returns>HttpStatusCode?.</returns>
+        /// <returns>HttpStatusCode or null.</returns>
         public static HttpStatusCode? Void(long id)
         {
             // https://api.postmaster.io/v1/shipments/:id/void
@@ -185,26 +165,6 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
             url = string.Format(url, Config.BaseUri, Config.Version, Resource, id);
 
             return Request.Delete(url);
-        }
-
-        /// <summary>
-        /// Get Shipment by Id.
-        /// </summary>
-        /// <param name="id">Id.</param>
-        /// <returns>Shipment.</returns>
-        public static Shipment Get(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Get all Shipments.
-        /// </summary>
-        /// <param name="limit">Result limit.</param>
-        /// <returns>Shipment collection.</returns>
-        public static List<Shipment> GetAll(int limit)
-        {
-            throw new NotImplementedException();
         }
 
         /// <summary>

@@ -31,7 +31,7 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         #region Utilities
 
         /// <summary>
-        /// Monitor external package.
+        /// Monitor external package; generate webhook.
         /// </summary>
         /// <returns>ExternalPackageResponse or null.</returns>
         public static ExternalPackageResponse MonitorExternalPackage(ExternalPackage webhook)

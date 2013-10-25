@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Postmaster.io.Api.V1.Entities.Tracking;
 using Postmaster.io.Managers;
 

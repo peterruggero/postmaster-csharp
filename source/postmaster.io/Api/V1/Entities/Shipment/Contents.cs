@@ -2,6 +2,9 @@
 
 namespace Postmaster.io.Api.V1.Entities.Shipment
 {
+    /// <summary>
+    /// Contents.
+    /// </summary>
     public class Contents
     {
         [JsonProperty("country_of_origin", NullValueHandling = NullValueHandling.Ignore)]
