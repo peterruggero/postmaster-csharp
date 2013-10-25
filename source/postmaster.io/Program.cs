@@ -224,7 +224,7 @@ namespace Postmaster.io
             };
 
             var rateResponse = Rate.GetRate(rateRequest);
-            Debug.WriteLine(rateResponse.Charge);
+            Debug.WriteLine(rateResponse.Best);
 
             #endregion
 
