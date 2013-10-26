@@ -26,14 +26,14 @@
         }
 
 
-        private static string _apiKey = "";
+        private static string _apiKey = string.Empty;
         public static string ApiKey
         {
             get { return _apiKey; }
             set { _apiKey = value; }
         }
 
-        private static string _password = "";
+        private static string _password = string.Empty;
         public static string Password
         {
             get { return _password; }
