@@ -25,7 +25,6 @@
             get { return "Postmaster/" + Version + " .NET " + FrameworkVersion; }
         }
 
-
         private static string _apiKey = string.Empty;
         public static string ApiKey
         {

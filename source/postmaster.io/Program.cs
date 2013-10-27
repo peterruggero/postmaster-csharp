@@ -14,31 +14,31 @@ namespace Postmaster.io
         public static void Main(string[] args)
         {
             #region Create Shipment
-            Shipment shipment = new Shipment
-            {
-                To = new To
-                {
-                    Company = "ASLS",
-                    Contact = "Joe Smith",
-                    Line1 = "1110 Someplace Ave.",
-                    City = "Austin",
-                    State = "TX",
-                    ZipCode = "78704",
-                    PhoneNo = "5551234444"
-                },
-                Carrier = "ups",
-                Service = "2day",
-                Package = new Package
-                {
-                    Weight = 1.5,
-                    Length = 10,
-                    Width = 6,
-                    Height = 8
-                }
-            };
+            //Shipment shipment = new Shipment
+            //{
+            //    To = new To
+            //    {
+            //        Company = "ASLS",
+            //        Contact = "Joe Smith",
+            //        Line1 = "1110 Someplace Ave.",
+            //        City = "Austin",
+            //        State = "TX",
+            //        ZipCode = "78704",
+            //        PhoneNo = "5551234444"
+            //    },
+            //    Carrier = "ups",
+            //    Service = "2day",
+            //    Package = new Package
+            //    {
+            //        Weight = 1.5,
+            //        Length = 10,
+            //        Width = 6,
+            //        Height = 8
+            //    }
+            //};
 
-            Shipment responseShipment = shipment.Create();
-            Debug.WriteLine(responseShipment.Id);
+            //Shipment responseShipment = shipment.Create();
+            //Debug.WriteLine(responseShipment.Id);
 
             //var trackResult = Shipment.Track("1ZE608Y30300032484");
             //Debug.WriteLine(trackResult.Status);
@@ -214,18 +214,18 @@ namespace Postmaster.io
             //  -d "weight=1.0" \
             //  -d "service=INTL_PRIORITY"
 
-            Rate rateRequest = new Rate
-            {
-                FromCountry = "US",
-                ToCountry = "KR",
-                FromZip = "78748",
-                ToZip = "683300",
-                Weight = 1.0,
-                Service = "INTL_PRIORITY"
-            };
+            //Rate rateRequest = new Rate
+            //{
+            //    FromCountry = "US",
+            //    ToCountry = "KR",
+            //    FromZip = "78748",
+            //    ToZip = "683300",
+            //    Weight = 1.0,
+            //    Service = "INTL_PRIORITY"
+            //};
 
-            var rateResponse = Rate.GetRate(rateRequest);
-            Debug.WriteLine(rateResponse.Best);
+            //var rateResponse = Rate.GetRate(rateRequest);
+            //Debug.WriteLine(rateResponse.Best);
 
             #endregion
 
