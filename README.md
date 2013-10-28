@@ -7,20 +7,25 @@ Postmaster takes the pain out of sending shipments via UPS, Fedex, and USPS. Sav
 
 https://www.postmaster.io/
 
-<h2>Requirements</h2>
-==================
+<h2>Minimum Requirements</h2>
 <ul>
-<li>.NET 4.0, 4.5
-<li>Microsoft Visual Studio 2010, 2012</li>
-<li>Microsoft Windows Vista, Windows 7, Windows 8 or greater</li>
-<li>
+<li>Microsoft Windows 7</li>
+<li>.NET 4.0
+<li>Microsoft Visual Studio 2010</li>
 </ul>
 
 <h2>Installation</h2>
-==================
-<h3>NuGet</h3>
+<h4>NuGet</h4>
+TODO
+
+<h4>Dynamic-link Library (.dll)</h4>
+TODO
+
+<h4>Source</h4>
 TODO
 
 <h2>Usage</h2>
-==================
-TODO
+See https://www.postmaster.io/docs for tutorials and documentation.
+
+<h2>Issues</h2>
+Please use appropriately tagged github <a href="https://github.com/postmaster/postmaster-api/issues">issues</a> to request features or report bugs.
