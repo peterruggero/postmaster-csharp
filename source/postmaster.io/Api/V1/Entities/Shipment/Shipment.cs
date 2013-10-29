@@ -73,6 +73,9 @@ namespace Postmaster.io.Api.V1.Entities.Shipment
         [JsonProperty("label", NullValueHandling = NullValueHandling.Ignore)]
         public Label Label { get; set; }
 
+        [JsonProperty("dimension_units", NullValueHandling = NullValueHandling.Ignore)]
+        public string DimensionUnits { get; set; }
+
         [JsonIgnore]
         public string ReferenceNo { get; set; }
 
