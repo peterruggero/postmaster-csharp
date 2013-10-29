@@ -22,7 +22,7 @@ namespace Postmaster.io.Api.V1.Entities.Box
         public List<Box> Results { get; set; }
 
         [JsonIgnore]
-        private const string Resource = "shipments";
+        private const string Resource = "packages";
 
         #endregion
 

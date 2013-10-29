@@ -187,21 +187,21 @@ namespace Postmaster.io
 
             #region Get Transit Times
 
-            ////TransitTime timeArgs = new TransitTime
-            ////{
-            ////    Carrier = "UPS",
-            ////    Commercial = false,
-            ////    FromZip = "74104",
-            ////    ToZip = "74003",
-            ////    Weight = 5.5
-            ////};
+            //TransitTime timeArgs = new TransitTime
+            //{
+            //    Carrier = "UPS",
+            //    Commercial = false,
+            //    FromZip = "74104",
+            //    ToZip = "74003",
+            //    Weight = 5.5
+            //};
 
-            ////var times = TransitTime.GetTimes(timeArgs);
-            ////foreach (var time in times)
-            ////{
-            ////    Debug.WriteLine(time.Service);
-            ////    Debug.WriteLine(time.DeliveryTimestamp);
-            ////}
+            //var times = TransitTime.GetTimes(timeArgs);
+            //foreach (var time in times)
+            //{
+            //    Debug.WriteLine(time.Service);
+            //    Debug.WriteLine(time.DeliveryTimestamp);
+            //}
 
             #endregion
 
@@ -225,37 +225,40 @@ namespace Postmaster.io
             //};
 
             //var rateResponse = Rate.GetRate(rateRequest);
-            //Debug.WriteLine(rateResponse.Best);
+            //Debug.WriteLine(rateResponse.Usps.GuaranteedDays);
 
             #endregion
 
             #region Create Box
 
-            ////var box = new Box
-            ////{
-            ////    Width = 10,
-            ////    Height = 12,
-            ////    Length = 8,
-            ////    Name = "My Fun Box"
-            ////};
+            //var box = new Box
+            //{
+            //    Width = 10,
+            //    Height = 12,
+            //    Length = 8,
+            //    Name = "My Fun Box"
+            //};
 
-            ////// instance
-            ////var boxResult = box.Create();
-            ////Debug.WriteLine(boxResult.Id);
+            //// instance
+            //var boxResult = box.Create();
+            //Debug.WriteLine(boxResult.Id);
 
-            ////// static
-            ////boxResult = Box.Create(box);
-            ////Debug.WriteLine(boxResult.Id);
+            //// static
+            //boxResult = Box.Create(box);
+            //Debug.WriteLine(boxResult.Id);
 
             #endregion
 
             #region List Boxes
 
-            ////var boxes = Boxes.All();
-            ////foreach (var box1 in boxes.Results)
-            ////{
-            ////    Debug.WriteLine(box1.Id + " : " + box1.Name);
-            ////}
+            //var boxes = Boxes.All(5000);
+            //foreach (var box1 in boxes.Results)
+            //{
+            //    if (!string.IsNullOrEmpty(box1.Name))
+            //    {
+            //        Debug.WriteLine(box1.Id + " : " + box1.Name);
+            //    }
+            //}
 
             #endregion
 
@@ -269,42 +272,42 @@ namespace Postmaster.io
             ////    ]
             ////    }'
 
-            ////FitRequest fitRequest = new FitRequest
-            ////{
-            ////    Items = new List<Item>
-            ////   {
-            ////       new Item
-            ////       {
-            ////           Width = 2.2,
-            ////           Length = 3,
-            ////           Height = 1,
-            ////           Count = 2
-            ////       }
-            ////   },
-            ////    Packages = new List<Box>
-            ////   {
-            ////       new Box
-            ////       {
-            ////           Width = 6,
-            ////           Length = 6,
-            ////           Height = 6,
-            ////           Sku = "123ABC"
-            ////       },
-            ////       new Box
-            ////       {
-            ////           Width = 12,
-            ////           Length = 12,
-            ////           Height = 12,
-            ////           Sku = "456XYZ"
-            ////       }
-            ////   }
-            ////};
+            FitRequest fitRequest = new FitRequest
+            {
+                Items = new List<Item>
+                {
+                    new Item
+                    {
+                        Width = 2.2,
+                        Length = 3,
+                        Height = 1,
+                        Count = 2
+                    }
+                },
+                Packages = new List<Box>
+                {
+                    new Box
+                    {
+                        Width = 6,
+                        Length = 6,
+                        Height = 6,
+                        Sku = "123ABC"
+                    },
+                    new Box
+                    {
+                        Width = 12,
+                        Length = 12,
+                        Height = 12,
+                        Sku = "456XYZ"
+                    }
+                }
+            };
 
-            ////var fitResponse = fitRequest.Fit();
-            ////foreach (var box2 in fitResponse.Boxes)
-            ////{
-            ////    Debug.WriteLine(box2.ImageUrl);
-            ////}
+            var fitResponse = fitRequest.Fit();
+            foreach (var box2 in fitResponse.Boxes)
+            {
+                Debug.WriteLine(box2.ImageUrl);
+            }
 
             #endregion
         }
