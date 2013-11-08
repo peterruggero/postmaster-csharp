@@ -77,6 +77,7 @@ namespace Postmaster.io
                 }
                 catch (Exception ex)
                 {
+                    
                     Debug.WriteLine("Error dynamically loading dll: " + args.Name, ex);
                     return null;
                 }
