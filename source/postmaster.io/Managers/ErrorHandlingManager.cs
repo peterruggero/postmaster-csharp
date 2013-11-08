@@ -50,9 +50,7 @@ namespace Postmaster.io.Managers
         public static void PrintMessage(string message)
         {
             Debug.WriteLine(@"====================================ERROR=================================");
-
             Debug.WriteLine(@"MESSAGE: " + message);
-
             Debug.WriteLine(@"====================================ERROR=================================");
         }
     }
