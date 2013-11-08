@@ -133,59 +133,6 @@ namespace Postmaster.io.Api.V1.Handlers
         }
 
         /// <summary>
-        /// Create HTTP Web Request.
-        /// </summary>
-        /// <param name="url">Url.</param>
-        /// <param name="method">Method.</param>
-        /// <param name="acceptType">Accept type.</param>
-        /// <param name="body">Body.</param>
-        /// <returns>HttpWebRequest.</returns>
-        private static HttpWebRequest CreateHttpWebRequest(string url, string method, string acceptType, string body)
-        {
-            try
-            {
-                // create request
-                HttpWebRequest request = (HttpWebRequest) WebRequest.Create(url);
-
-                // set headers and options
-                request.Method = method;
-                request.Accept = acceptType;
-                request.KeepAlive = false;
-                request.Pipelined = false;
-                request.Timeout = 60000;
-                request.UserAgent = Config.UserAgent;
-                request.PreAuthenticate = false;
-
-                // set credentials
-                string credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes(Config.ApiKey + ":" + Config.Password));
-                request.Headers[HttpRequestHeader.Authorization] = "Basic " + credentials;
-
-                // if post or put
-                if (method.Equals(WebRequestMethods.Http.Post) || method.Equals(WebRequestMethods.Http.Post))
-                {
-                    //request.ContentType = "application/x-www-form-urlencoded";
-                    request.ContentType = "application/json";
-                }
-
-                // TO DO
-                //
-                // TO DO
-
-                return request;
-            }
-            catch (WebException e)
-            {
-                ErrorHandlingManager.ReportError(e.Message, "Request.cs", "CreateHttpWebRequest");
-            }
-            catch (Exception e)
-            {
-                ErrorHandlingManager.ReportError(e.Message, "Request.cs", "CreateHttpWebRequest");
-            }
-
-            return null;
-        }
-
-        /// <summary>
         /// Read and handle HTTP web response.
         /// </summary>
         /// <param name="request">HttpWebRequest.</param>
@@ -245,7 +192,6 @@ namespace Postmaster.io.Api.V1.Handlers
 
             return result;
         }
-
     }
 }
 
