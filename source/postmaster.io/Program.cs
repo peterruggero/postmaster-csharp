@@ -18,28 +18,28 @@ namespace Postmaster.io
         {
             /*
             #region Create Shipment
-            //Shipment shipment = new Shipment
-            //{
-            //    To = new To
-            //    {
-            //        Company = "ASLS",
-            //        Contact = "Joe Smith",
-            //        Line1 = "1110 Someplace Ave.",
-            //        City = "Austin",
-            //        State = "TX",
-            //        ZipCode = "78704",
-            //        PhoneNo = "5551234444"
-            //    },
-            //    Carrier = "ups",
-            //    Service = "2day",
-            //    Package = new Package
-            //    {
-            //        Weight = 1.5,
-            //        Length = 10,
-            //        Width = 6,
-            //        Height = 8
-            //    }
-            //};
+            Shipment shipment = new Shipment
+            {
+                To = new To
+                {
+                    Company = "ASLS",
+                    Contact = "Joe Smith",
+                    Line1 = "1110 Someplace Ave.",
+                    City = "Austin",
+                    State = "TX",
+                    ZipCode = "78704",
+                    PhoneNo = "5551234444"
+                },
+                Carrier = "ups",
+                Service = "2day",
+                Package = new Package
+                {
+                    Weight = 1.5,
+                    Length = 10,
+                    Width = 6,
+                    Height = 8
+                }
+            };
 
             //Shipment responseShipment = shipment.Create();
             //Debug.WriteLine(responseShipment.Id);
@@ -59,48 +59,48 @@ namespace Postmaster.io
             //}
 
             //// new international shipment
-            //var intlShipment = new Shipment
-            //{
-            //    To = new To
-            //    {
-            //        Company = "Group SEB",
-            //        Contact = "Joe Smith",
-            //        Line1 = "Les 4 M - Chemin du Petit Bois",
-            //        Line2 = "BP 172",
-            //        City = "ECULLY CEDEX",
-            //        Country = "FR",
-            //        ZipCode = "69134",
-            //        PhoneNo = "9197207941",
-            //        Residential = true
-            //    },
-            //    Carrier = "FEDEX",
-            //    Service = "INTL_PRIORITY",
-            //    Package = new Package
-            //    {
-            //        Weight = 2.2,
-            //        Length = 10,
-            //        Width = 6,
-            //        Height = 8,
-            //        Customs = new Customs
-            //        {
-            //            Type = "Other",
-            //            Comments = "Some great stuff.",
-            //            Contents = new List<Dictionary<string, object>>
-            //            {
-            //                new Dictionary<string, object>
-            //                {
-            //                    {"description", "A Bolt"},
-            //                    {"value", 0.34},
-            //                    {"quantity", 1},
-            //                    {"weight", 0.5},
-            //                    {"weight_units", "LB"},
-            //                    {"country_of_origin", "US"}
-            //                }
-            //            }
-            //        }
-            //    }
-            //};
-            //intlShipment = intlShipment.Create();
+            var intlShipment = new Shipment
+            {
+                To = new To
+                {
+                    Company = "Group SEB",
+                    Contact = "Joe Smith",
+                    Line1 = "Les 4 M - Chemin du Petit Bois",
+                    Line2 = "BP 172",
+                    City = "ECULLY CEDEX",
+                    Country = "FR",
+                    ZipCode = "69134",
+                    PhoneNo = "9197207941",
+                    Residential = true
+                },
+                Carrier = "FEDEX",
+                Service = "INTL_PRIORITY",
+                Package = new Package
+                {
+                    Weight = 2.2,
+                    Length = 10,
+                    Width = 6,
+                    Height = 8,
+                    Customs = new Customs
+                    {
+                        Type = "Other",
+                        Comments = "Some great stuff.",
+                        Contents = new List<Dictionary<string, object>>
+                        {
+                            new Dictionary<string, object>
+                            {
+                                {"description", "A Bolt"},
+                                {"value", 0.34},
+                                {"quantity", 1},
+                                {"weight", 0.5},
+                                {"weight_units", "LB"},
+                                {"country_of_origin", "US"}
+                            }
+                        }
+                    }
+                }
+            };
+            intlShipment = intlShipment.Create();
             //Debug.WriteLine(intlShipment.Tracking[0] + ": " + intlShipment.To.City);
 
             #endregion
@@ -114,40 +114,11 @@ namespace Postmaster.io
 
             #endregion
 
-            #region Get Shipments
+            
 
-            //var shipments = Shipments.All(10, status: "Voided");
-            //if (shipment != null)
-            //{
+            
 
-            //    foreach (var shipmentResult in shipments.Results)
-            //    {
-            //        Debug.WriteLine("Get shipments: " + shipmentResult.Id + "-" + shipmentResult.Status);
-            //    }
-            //    Debug.WriteLine("done...");
-            //}
-
-            #endregion
-
-            #region Track
-
-            ////var results = Shipment.Track(shipment.Id);
-            ////if (results != null)
-            ////{
-            ////    foreach (var result1 in results)
-            ////    {
-            ////        Debug.WriteLine(result1.Status);
-            ////    }
-            ////}
-
-            #endregion
-
-            #region Track by Reference
-
-            ////var result2 = Shipment.Track("1ZW470V80310800043");
-            ////Debug.WriteLine(result2.Status);
-
-            #endregion
+            
 
             #region Monitor external package
 
@@ -166,12 +137,7 @@ namespace Postmaster.io
 
             #endregion
 
-            #region Void Shipment
-
-            ////var status = Shipment.Void(shipment.Id);
-            ////Debug.WriteLine(status);
-
-            #endregion
+            
 
             #region Validate address
 
@@ -316,6 +282,62 @@ namespace Postmaster.io
             #endregion
              * 
              * */
+
+            //#region Get Shipments
+
+            ////Shipments shipments = Shipments.All(10, status: "Voided");
+            ////foreach (var shipmentResult in shipments.Results)
+            ////{
+            ////    Debug.WriteLine("Get shipments: " + shipmentResult.Id + "-" + shipmentResult.Status);
+            ////}
+            ////Debug.WriteLine("done...");
+
+            //#endregion
+
+            #region Track
+
+            //var results = Shipment.Track(1234);
+            //if (results != null)
+            //{
+            //    foreach (var result1 in results)
+            //    {
+            //        Debug.WriteLine(result1.Status);
+            //    }
+            //}
+
+            #region Track by Reference
+
+            //var result2 = Shipment.Track("1ZW470V80310800043");
+            ////Debug.WriteLine(result2.Status);
+
+            #endregion
+
+
+            #endregion
+
+            #region Void Shipment
+
+            //var status = Shipment.Void(1234);
+            //Debug.WriteLine(status);
+
+            #endregion
+
+            #region Monitor external package
+
+            //ExternalPackage hook = new ExternalPackage
+            //{
+            //    TrackingNumber = "1ZW470V80310800043",
+            //    Url = "sampleurl",
+            //    Events = new List<string>
+            //    {
+            //        "Delivered",
+            //        "Exception"
+            //    }
+            //};
+            //ExternalPackageResponse response = ExternalPackage.MonitorExternalPackage(hook);
+            //Debug.WriteLine(response.Event);
+
+            #endregion
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Postmaster.io
     /// <summary>
     /// Postermaster driver class.
     /// </summary>
-    public class Postmaster
+    public static class Postmaster
     {
         /// <summary>
         /// Initialize configuration.
