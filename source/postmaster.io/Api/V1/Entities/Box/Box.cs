@@ -1,6 +1,4 @@
-﻿using System;
-using System.Security.Cryptography.X509Certificates;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Postmaster.io.Api.V1.Handlers;
 
 namespace Postmaster.io.Api.V1.Entities.Box

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
-using Postmaster.io.Api.V1.Entities.Helper;
 using Postmaster.io.Api.V1.Handlers;
 
 namespace Postmaster.io.Api.V1.Entities.Time

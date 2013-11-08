@@ -17,7 +17,7 @@
 
         public static string FrameworkVersion
         {
-            get { return "4.0";; }
+            get { return "4.0"; }
         }
 
         public static string UserAgent
