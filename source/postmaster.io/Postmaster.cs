@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using Postmaster.io.Managers;
@@ -16,9 +17,20 @@ namespace Postmaster.io
         /// <param name="apiKey">Postmaster API key.</param>
         public static void Init(string apiKey)
         {
-            Config.ApiKey = apiKey;
+            // load json.net resource
+            string resource = "Postmaster.io.Libraries.Newtonsoft.Json.dll";
+            EmbeddedAssembly.Load(resource, "Newtonsoft.Json.dll");
 
-            EnableDynamicLoadingForDlls(Assembly.GetExecutingAssembly(), "Newtonsoft.Json.dll");
+            AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+
+
+            // set Postmaster API key
+            Config.ApiKey = apiKey;
+        }
+
+        static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+        {
+            return EmbeddedAssembly.Get(args.Name);
         }
 
         /// <summary>
@@ -32,34 +44,28 @@ namespace Postmaster.io
             Config.Password = password;
         }
 
-        private static void EnableDynamicLoadingForDlls(Assembly assemblyToLoadFrom, string embeddedResource)
+        public static void EnableDynamicLoadingForDlls(Assembly assemblyToLoadFrom, string embeddedResourcePrefix)
         {
             AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
             {
                 try
                 {
-                    string resName = embeddedResource + "." + args.Name.Split(',')[0];
+                    string resName = embeddedResourcePrefix + "." + args.Name.Split(',')[0] + ".dll";
                     using (Stream input = assemblyToLoadFrom.GetManifestResourceStream(resName))
                     {
                         return input != null
-                            ? Assembly.Load(StreamToBytes(input))
-                            : null;
+                             ? Assembly.Load(StreamToBytes(input))
+                             : null;
                     }
                 }
                 catch (Exception ex)
                 {
-                    ErrorHandlingManager.ReportError("Error dynamically loading dll: " + args.Name + " " + ex,
-                        "Postmaster.cs", "EnableDynamicLoadingForDlls");
+                    Debug.WriteLine("Error dynamically loading dll: " + args.Name, ex);
                     return null;
                 }
             };
         }
 
-        /// <summary>
-        /// Stream input data to bytes.
-        /// </summary>
-        /// <param name="input">Input data.</param>
-        /// <returns>Byte array.</returns>
         private static byte[] StreamToBytes(Stream input)
         {
             int capacity = input.CanSeek ? (int)input.Length : 0;
@@ -70,7 +76,7 @@ namespace Postmaster.io
 
                 do
                 {
-                    readLength = input.Read(buffer, 0, buffer.Length);
+                    readLength = input.Read(buffer, 0, buffer.Length); // had to change to buffer.Length
                     output.Write(buffer, 0, readLength);
                 }
                 while (readLength != 0);
