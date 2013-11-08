@@ -70,6 +70,7 @@
     <Compile Include="Api\V1\Entities\Shipment\From.cs" />
     <Compile Include="Api\V1\Entities\Shipment\Package.cs" />
     <Compile Include="Api\V1\Handlers\Request.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
