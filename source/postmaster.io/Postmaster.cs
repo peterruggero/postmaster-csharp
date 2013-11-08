@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using Postmaster.io.Managers;
 
 namespace Postmaster.io
 {
@@ -28,11 +27,6 @@ namespace Postmaster.io
             Config.ApiKey = apiKey;
         }
 
-        static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
-        {
-            return EmbeddedAssembly.Get(args.Name);
-        }
-
         /// <summary>
         /// Initialize configuration.
         /// </summary>
@@ -40,10 +34,33 @@ namespace Postmaster.io
         /// <param name="password">Postmaster password (may be optional).</param>
         public static void Init(string apiKey, string password)
         {
+            // load json.net resource
+            string resource = "Postmaster.io.Libraries.Newtonsoft.Json.dll";
+            EmbeddedAssembly.Load(resource, "Newtonsoft.Json.dll");
+
+            AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
+
             Config.ApiKey = apiKey;
             Config.Password = password;
         }
 
+        /// <summary>
+        /// ResolveEvent handler for loading third-party libraries;
+        /// </summary>
+        /// <param name="sender">Sender.</param>
+        /// <param name="args">Args.</param>
+        /// <returns>Embedded Assembly.</returns>
+        static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+        {
+            return EmbeddedAssembly.Get(args.Name);
+        }
+
+        /// <summary>
+        /// Subscribe to AssemblyResolve event in the case that a third-party
+        /// library fails to load initially.
+        /// </summary>
+        /// <param name="assemblyToLoadFrom">Current running Assembly.</param>
+        /// <param name="embeddedResourcePrefix">Resource prefix (name).</param>
         public static void EnableDynamicLoadingForDlls(Assembly assemblyToLoadFrom, string embeddedResourcePrefix)
         {
             AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
@@ -66,6 +83,11 @@ namespace Postmaster.io
             };
         }
 
+        /// <summary>
+        /// Stream input stream to bytes.
+        /// </summary>
+        /// <param name="input">Input stream.</param>
+        /// <returns>Byte array.</returns>
         private static byte[] StreamToBytes(Stream input)
         {
             int capacity = input.CanSeek ? (int)input.Length : 0;
