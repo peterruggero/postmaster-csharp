@@ -17,9 +17,11 @@ https://www.postmaster.io/
 <h2>Installation</h2>
 <h4>NuGet</h4>
 To view available versions:
+
 <code>Get-Package -ListAvailable -Filter Postmaster</code>
 
 To install the most recent package:
+
 <code>Install-Package Postmaster-CSharp</code>
 
 <h2>Usage</h2>
