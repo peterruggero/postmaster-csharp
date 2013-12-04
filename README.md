@@ -18,11 +18,11 @@ https://www.postmaster.io/
 <h4>NuGet</h4>
 These commands can be run from within the NuGet Package Manager Console.
 
-To view available versions:
+View available versions:
 
 <code>Get-Package -ListAvailable -Filter Postmaster</code>
 
-To install the most recent package:
+Install the most recent package:
 
 <code>Install-Package Postmaster-CSharp</code>
 
