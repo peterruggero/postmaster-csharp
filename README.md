@@ -16,6 +16,8 @@ https://www.postmaster.io/
 
 <h2>Installation</h2>
 <h4>NuGet</h4>
+These commands can be run from within the NuGet Package Manager Console.
+
 To view available versions:
 
 <code>Get-Package -ListAvailable -Filter Postmaster</code>
