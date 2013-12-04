@@ -10,19 +10,17 @@ https://www.postmaster.io/
 <h2>Minimum Requirements</h2>
 <ul>
 <li>Microsoft Windows 7</li>
-<li>.NET 4.0
+<li>.NET 4.0 or .NET 4.5
 <li>Microsoft Visual Studio 2010</li>
 </ul>
 
 <h2>Installation</h2>
 <h4>NuGet</h4>
-TODO
+To view available versions:
+<code>Get-Package -ListAvailable -Filter Postmaster</code>
 
-<h4>Dynamic-link Library (.dll)</h4>
-TODO
-
-<h4>Source</h4>
-TODO
+To install the most recent package:
+<code>Install-Package Postmaster-CSharp</code>
 
 <h2>Usage</h2>
 See https://www.postmaster.io/docs for tutorials and documentation.
