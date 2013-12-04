@@ -10,7 +10,7 @@ https://www.postmaster.io/
 <h2>Minimum Requirements</h2>
 <ul>
 <li>Microsoft Windows 7</li>
-<li>.NET 4.0 or .NET 4.5
+<li>.NET 4.0
 <li>Microsoft Visual Studio 2010</li>
 </ul>
 
