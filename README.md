@@ -18,7 +18,7 @@ https://www.postmaster.io/
 <h4>NuGet</h4>
 View available versions:
 
-<code>Get-Package -ListAvailable -Filter Postmaster</code>
+<code>Get-Package -ListAvailable -Filter Postmaster-CSharp</code>
 
 Install the most recent package:
 
