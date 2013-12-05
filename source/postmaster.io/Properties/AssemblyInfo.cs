@@ -2,6 +2,13 @@
 using System.Runtime.InteropServices;
 using System.Resources;
 
+// **********************************************************************
+// **********************************************************************
+// Original Author: Zach Harbort (https://github.com/MorbidZach/)
+// Version: 1.0.0.0
+// **********************************************************************
+// **********************************************************************
+
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
