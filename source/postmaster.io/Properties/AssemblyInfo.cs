@@ -4,7 +4,9 @@ using System.Resources;
 
 // **********************************************************************
 // **********************************************************************
-// Original Author: Zach Harbort (https://github.com/MorbidZach/)
+// Original Author: Zach Harbort
+// Website: http://www.zach-harbort.com
+// GitHub: https://github.com/MorbidZach/
 // Version: 1.0.0.0
 // **********************************************************************
 // **********************************************************************
