@@ -11,9 +11,6 @@ namespace Postmaster.io.Api.V1.Entities.Box
         [JsonProperty("box", NullValueHandling = NullValueHandling.Ignore)]
         public Box Box { get; set; }
 
-        [JsonProperty("image_url", NullValueHandling = NullValueHandling.Ignore)]
-        public string ImageUrl { get; set; }
-
         [JsonProperty("items", NullValueHandling = NullValueHandling.Ignore)]
         public List<Item> Items { get; set; } 
     }

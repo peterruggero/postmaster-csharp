@@ -33,5 +33,8 @@ namespace Postmaster.io.Api.V1.Entities.Box
 
         [JsonProperty("count", NullValueHandling = NullValueHandling.Ignore)]
         public int Count { get; set; }
+
+        [JsonProperty("image_url", NullValueHandling = NullValueHandling.Ignore)]
+        public string ImageUrl { get; set; }
     }
 }

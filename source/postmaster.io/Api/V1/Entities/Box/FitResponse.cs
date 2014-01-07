@@ -15,6 +15,9 @@ namespace Postmaster.io.Api.V1.Entities.Box
         public List<FitResponseBody> Boxes { get; set; }
 
         [JsonProperty("leftovers", NullValueHandling = NullValueHandling.Ignore)]
-        public List<object> Leftovers { get; set; } 
+        public List<object> Leftovers { get; set; }
+
+        [JsonProperty("image_url", NullValueHandling = NullValueHandling.Ignore)]
+        public string ImageUrl { get; set; }
     }
 }

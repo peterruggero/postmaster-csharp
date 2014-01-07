@@ -6,7 +6,7 @@
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C0B812A3-4FFE-43AA-AE09-711B688CB199}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>Postmaster.io</RootNamespace>
     <AssemblyName>Postmaster.io</AssemblyName>
   </PropertyGroup>
