@@ -15,5 +15,8 @@ namespace Postmaster.io.Api.V1.Entities.Rate
 
         [JsonProperty("service", NullValueHandling = NullValueHandling.Ignore)]
         public string Service { get; set; }
+
+        [JsonProperty("charge", NullValueHandling = NullValueHandling.Ignore)]
+        public string Charge { get; set; }
     }
 }
