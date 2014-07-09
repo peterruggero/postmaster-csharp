@@ -7,7 +7,7 @@ using System.Resources;
 // Original Author: Zach Harbort
 // Website: http://www.zach-harbort.com
 // GitHub: https://github.com/MorbidZach/
-// Version: 1.0.0.1
+// Version: 1.0.0.3
 // **********************************************************************
 // **********************************************************************
 
@@ -38,6 +38,6 @@ using System.Resources;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.0.0.2")]
-[assembly: AssemblyFileVersion("1.0.0.2")]
+[assembly: AssemblyVersion("1.0.0.3")]
+[assembly: AssemblyFileVersion("1.0.0.3")]
 [assembly: NeutralResourcesLanguageAttribute("en")]

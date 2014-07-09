@@ -25,6 +25,15 @@ namespace Postmaster.io.Api.V1.Entities.Rate
         [JsonProperty("weight", NullValueHandling = NullValueHandling.Ignore)]
         public double Weight { get; set; }
 
+        [JsonProperty("width", NullValueHandling = NullValueHandling.Ignore)]
+        public double Width { get; set; }
+
+        [JsonProperty("length", NullValueHandling = NullValueHandling.Ignore)]
+        public double Length { get; set; }
+
+        [JsonProperty("height", NullValueHandling = NullValueHandling.Ignore)]
+        public double Height { get; set; }
+
         [JsonProperty("carrier", NullValueHandling = NullValueHandling.Ignore)]
         public string Carrier { get; set; }
 
@@ -36,6 +45,9 @@ namespace Postmaster.io.Api.V1.Entities.Rate
 
         [JsonProperty("packaging", NullValueHandling = NullValueHandling.Ignore)]
         public string Packaging { get; set; }
+
+        [JsonProperty("dimension_units", NullValueHandling = NullValueHandling.Ignore)]
+        public string DimensionUnits { get; set; }
 
         [JsonIgnore] 
         private const string Resource = "rates";
