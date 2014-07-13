@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Net;
+using Newtonsoft.Json;
 using Postmaster.io.Api.V1.Handlers;
 
 namespace Postmaster.io.Api.V1.Entities.Box
@@ -65,6 +67,19 @@ namespace Postmaster.io.Api.V1.Entities.Box
             return response != null ? JsonConvert.DeserializeObject<Box>(response) : null;
         }
 
+        /// <summary>
+        /// Delete this Box.
+        /// </summary>
+        /// <returns>HttpStatusCode or null.</returns>
+        public HttpStatusCode? Delete()
+        {
+            // https://api.postmaster.io/v1/packages/:id
+            string url = "{0}/{1}/{2}/{3}";
+            url = string.Format(url, Config.BaseUri, Config.Version, Resource, this.Id);
+
+            return Request.Delete(url);
+        }
+
         #endregion
 
         #region Utilities
@@ -88,6 +103,19 @@ namespace Postmaster.io.Api.V1.Entities.Box
             return response != null ? JsonConvert.DeserializeObject<Box>(response) : null;
         }
 
+        /// <summary>
+        /// Delete Box by Id.
+        /// </summary>
+        /// <param name="id">Id.</param>
+        /// <returns>HttpStatusCode or null.</returns>
+        public static HttpStatusCode? Delete(long id)
+        {
+            // https://api.postmaster.io/v1/packages/:id
+            string url = "{0}/{1}/{2}/{3}";
+            url = string.Format(url, Config.BaseUri, Config.Version, Resource, id);
+
+            return Request.Delete(url);
+        }
 
         #endregion
     }
